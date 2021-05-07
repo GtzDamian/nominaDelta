@@ -12,7 +12,7 @@
                         <span>Username:</span>
                     </div>
                     <div class="col-6 p-0">
-                        <input type="text" class="form-control">
+                        <input oninput="this.value = this.value.toUpperCase()" [(ngModel)]="usuario.username" type="text" class="form-control" name="username" id="username" required autofocus>
                     </div>
                 </div>
                 <div class="row mt-3  justify-content-center">
@@ -20,7 +20,7 @@
                         <span>Nombre:</span>
                     </div>
                     <div class="col-6 p-0">
-                        <input type="text" class="form-control">
+                        <input oninput="this.value = this.value.toUpperCase()" [(ngModel)]="usuario.nombre" type="text" class="form-control" name="nombre" id="nombre" required autofocus>
                     </div>
                 </div>
                 <div class="row mt-3  justify-content-center">
@@ -28,7 +28,7 @@
                         <span>Apellido:</span>
                     </div>
                     <div class="col-6 p-0">
-                        <input type="text" class="form-control">
+                        <input oninput="this.value = this.value.toUpperCase()" [(ngModel)]="usuario.apellido" type="text" class="form-control" name="apellido" id="apellido" required autofocus>
                     </div>
                 </div>
                 <div class="row mt-3 justify-content-center">
@@ -36,15 +36,15 @@
                         <span>Password:</span>
                     </div>
                     <div class="col-6 p-0">
-                        <input type="text" class="form-control">
+                        <input [(ngModel)]="usuario.password" type="password" class="form-control" name="password" id="password" required autofocus>
                     </div>
                 </div>
                 <div class="row mt-4 justify-content-center">
                     <div class="col-5 text-center">
-                        <button class="btn btn-secondary" >Cancelar</button>
+                        <button class="btn btn-secondary" routerLink="..">Cancelar</button>
                     </div>
                     <div class="col-5 text-center" >
-                        <button class="btn btn-agregar">Agregar</button>
+                        <button class="btn btn-agregar" (click)="create()">Agregar</button>
                     </div>
                 </div>
             </div>

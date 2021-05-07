@@ -9,3 +9,7 @@ h2,h3{
 td{
     white-space: nowrap;
 }
+a, a:hover{
+    color: black;
+    font-size: 14px;
+}

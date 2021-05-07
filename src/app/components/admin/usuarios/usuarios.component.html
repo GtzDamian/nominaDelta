@@ -28,8 +28,8 @@
                         <td>{{usuario.nombre}}</td>
                         <td>{{usuario.apellido}}</td>
                         <td>{{usuario.createAt}}</td>
-                        <td><button class="btn" title="Editar Usuario" ><i class="fas fa-edit"></i></button></td>
-                        <td><button class="btn" title="Eliminar Usuario"><i class="fas fa-trash-alt"></i></button></td>
+                        <td><button class="btn" title="Editar Usuario" [routerLink]="['usuario', usuario.id]"><i class="fas fa-edit"></i></button></td>
+                        <td><button class="btn" title="Eliminar Usuario" (click)="borrarUsuario(usuario)"><i class="fas fa-trash-alt"></i></button></td>
                     </tr>
                 </tbody>
             </table>

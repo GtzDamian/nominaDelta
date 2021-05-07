@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, Routes } from '@angular/router';
+import Swal from 'sweetalert2';
 import { Usuario } from '../../../models/dto/usuario';
 import { Empresa } from '../../../models/dto/empresa';
 import { UsuarioService } from '../../../models/services/usuario.service';
@@ -45,6 +46,31 @@ export class UsuariosComponent implements OnInit {
       let id = params['id']
       if(id){
         this.empresaService.getEmpresa(id).subscribe((empresa) => this.empresa = empresa)
+      }
+    })
+  }
+
+  borrarUsuario(usuario: Usuario): void{
+    Swal.fire({
+      title: 'Borrar Usuario',
+      text: `¿Desea eliminar a ${usuario.username}?`,
+      icon: 'warning',
+      reverseButtons: true,
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      cancelButtonText: 'Cancelar',
+      confirmButtonText: 'Aceptar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.usuarioService.delete(usuario.id).subscribe(
+          response => {
+            Swal.fire('Eliminado', `${usuario.username} ha sido eliminado`,'success').
+            then(function(){ 
+              location.reload();
+            });
+          }
+        )
       }
     })
   }

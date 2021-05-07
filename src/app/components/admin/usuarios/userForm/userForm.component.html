@@ -1,10 +1,11 @@
 <div class="container-fluid ">
     <div class="container mt-3">
-        <div class="row">
-            <h2>
-                Agregar Nuevo Usuario
-            </h2>
+        <div class="row" *ngIf="!usuario.id else altTitle">
+            <h2>Agregar Usuario</h2>
         </div>
+        <ng-template #altTitle>
+            <h2>Editar Usuario</h2>
+        </ng-template>
         <div class="row mt-4 justify-content-center">
             <div class="card " style="width: 35rem;">
                 <div class="row justify-content-center">
@@ -41,11 +42,16 @@
                 </div>
                 <div class="row mt-4 justify-content-center">
                     <div class="col-5 text-center">
-                        <button class="btn btn-secondary" routerLink="..">Cancelar</button>
+                        <button class="btn btn-secondary" (click)="back()">Cancelar</button>
                     </div>
-                    <div class="col-5 text-center" >
+                    <div class="col-5 text-center" *ngIf="!usuario.id else altBtn" >
                         <button class="btn btn-agregar" (click)="create()">Agregar</button>
                     </div>
+                    <ng-template #altBtn>
+                        <div class="col-5 text-center">
+                            <button class="btn btn-agregar" (click)="create()">Actualizar</button>
+                        </div>
+                    </ng-template>
                 </div>
             </div>
         </div>

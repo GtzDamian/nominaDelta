@@ -12,12 +12,14 @@ export class UsuariosComponent implements OnInit {
 
   usuarios!: Usuario[];
   public usuario: Usuario = new Usuario();
-
+ 
   constructor(private usuarioService: UsuarioService, private router: Router, private activatedRoute: ActivatedRoute) {
    }
 
   ngOnInit(): void {
     this.cargarUsuarios();
+
+    
   }
 
   cargarUsuarios(): void{

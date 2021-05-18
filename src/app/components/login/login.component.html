@@ -4,16 +4,16 @@
             <h1>Acceso</h1>
         </div>
         <div class="row">
-            <h2>Sistema de Información Gerencial - Nómina</h2>
+            <h2>{{title}}</h2>
         </div>
         <div class="row mt-5 justify-content-center">
-            <div class=" card" style="width: 40rem;">
+            <div class=" card" style="width: 35rem; border: none" >
                 <div class="row mb-3">
                     <div class="col-md-4 d-flex align-items-center">
                         <span class="m-2">Ususario: </span>
                     </div>
                     <div class="col-md-8">
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" name="username" id="username" placeholder="Nombre de usuario" required autofocus>
                     </div>
                 </div>
                 <div class="row mb-4">
@@ -21,7 +21,7 @@
                         <span class="m-2">Contraseña: </span>
                     </div>
                     <div class="col-md-8">
-                        <input type="password" class="form-control">
+                        <input type="password" class="form-control" name="password" id="password" placeholder="Contraseña de usuario" required autofocus>
                     </div>
                 </div>
                 <div class="row justify-content-center">

@@ -1,0 +1,11 @@
+h1, span, button{
+    font-weight: 900;
+}
+.card{
+    padding: 15px
+}
+
+.btn{
+    background-color: #3e7198;
+    color: white;
+}

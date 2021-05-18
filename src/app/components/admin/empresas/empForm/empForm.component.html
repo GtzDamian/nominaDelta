@@ -1,0 +1,44 @@
+<div class="container-fluid">
+    <div class="container mt-3">
+        <div class="row" *ngIf="!empresa.id else altTitle">
+            <h2>Agregar Nueva Empresa</h2>
+        </div>
+        <ng-template #altTitle>
+            <div class="row">
+                <h2>Editar Empresa</h2>
+            </div>          
+        </ng-template>
+        <div class="row mt-4 justify-content-center">
+            <div class="card" style="width: 35rem;">
+                <div class="row mt-4 justify-content-center">
+                    <div class="col-3 d-flex justify-content-start align-items-center">
+                        <span>RFC:</span>
+                    </div>
+                    <div class="col-8 p-0">
+                        <input type="text" oninput="this.value = this.value.toUpperCase()"  [(ngModel)]="empresa.rfc" class="form-control" name="rfc" id="rfc" autofocus required>
+                    </div>
+                </div>
+                <div class="row mt-3 justify-content-center">
+                    <div class="col-3 d-flex justify-content-start align-items-center">
+                        <span>NOMBRE:</span>
+                    </div>
+                    <div class="col-8 p-0">
+                        <input type="text" oninput="this.value = this.value.toUpperCase()" [(ngModel)]="empresa.nombre" class="form-control" name="nombre" id="nombre" autofocus required>
+                    </div>
+                </div>
+                <div class="row mt-4 justify-content-center">
+                    <div class="col-5 text-center">
+                        <button class="btn btn-secondary" [routerLink]="['/admin']">Cancelar</button>
+                    </div>
+                    <div class="col-5 text-center" *ngIf="!empresa.id else altBtn">
+                        <button class="btn btn-agregar"  (click)="create()" >Agregar</button>
+                    </div>
+                    <ng-template #altBtn>
+                        <button class="btn btn-agregar"  (click)="update()" >Editar</button>
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

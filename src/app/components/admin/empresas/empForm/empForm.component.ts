@@ -23,7 +23,7 @@ export class EmpFormComponent implements OnInit {
 
   public create():void{
     this.empresaService.create(this.empresa).subscribe(empresa => {
-      this.router.navigate(['/admin'])
+      this.router.navigate(['/sig/admin'])
     })
   }
 
@@ -38,7 +38,7 @@ export class EmpFormComponent implements OnInit {
 
   public update(): void{
     this.empresaService.update(this.empresa).subscribe(empresa =>
-      {this.router.navigate(['/admin'])
+      {this.router.navigate(['/sig/admin'])
     })
   }
 }

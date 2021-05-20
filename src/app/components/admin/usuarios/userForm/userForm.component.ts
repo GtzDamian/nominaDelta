@@ -56,7 +56,7 @@ export class UserFormComponent implements OnInit {
     this.activatedRoute.params.subscribe(params => {
       var id:number = params['id'];
       if(id){
-        this.router.navigate(['/admin/usuarios/empresa/' + id])
+        this.router.navigate(['/sig/admin/usuarios/empresa/' + id])
       }
     })
   }

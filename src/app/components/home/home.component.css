@@ -1,0 +1,13 @@
+p{
+    text-align: justify;
+    color: black;
+    font-weight: 900;
+}
+h1,h2,h3,h4,h5,h6{
+    font-weight: 900;
+}
+
+.btn{
+    font-weight: 900;
+    background-color: #3e7198;
+}

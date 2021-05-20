@@ -1,0 +1,15 @@
+footer {
+    background: #3b4956;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    min-height: 1rem;
+    max-height: 5rem;
+    color: white;
+  }
+    
+  a{
+    color: white;
+    text-decoration: underline;
+  }
+  

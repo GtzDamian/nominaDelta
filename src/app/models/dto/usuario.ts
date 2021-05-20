@@ -1,4 +1,5 @@
 import { Empresa } from '../dto/empresa';
+import { Role } from '../dto/role';
 
 export class Usuario {
     id!: number;
@@ -9,4 +10,5 @@ export class Usuario {
     createAt!: string;
     enabled!: boolean;
     empresa!: Empresa[];
+    roles: Role[] = [];
 }

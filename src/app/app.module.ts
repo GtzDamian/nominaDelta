@@ -18,6 +18,7 @@ import { UsuarioService } from './models/services/usuario.service';
 import { UserFormComponent } from './components/admin/usuarios/userForm/userForm.component';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
+import { AuthService } from './models/services/auth.service';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { HomeComponent } from './components/home/home.component';
   ],
   providers: [
     EmpresaService,
-    UsuarioService
+    UsuarioService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

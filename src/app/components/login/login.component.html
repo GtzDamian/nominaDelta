@@ -1,5 +1,8 @@
 <div class="container-fluid">
     <div class="container mt-3">
+        <div class="row mb-3">
+            <a routerLink="/"><i class="fas fa-chevron-left"></i> Regresar</a>
+        </div>
         <div class="row">
             <h1>Iniciar Sesión</h1>
         </div>
@@ -13,7 +16,7 @@
                         <span class="m-2">Ususario: </span>
                     </div>
                     <div class="col-md-8">
-                        <input type="text" class="form-control" name="username" id="username" placeholder="Nombre de usuario" required autofocus>
+                        <input type="text" oninput="this.value = this.value.toUpperCase()" [(ngModel)]="usuario.username" class="form-control" name="username" id="username" placeholder="Nombre de usuario" required autofocus>
                     </div>
                 </div>
                 <div class="row mb-4">
@@ -21,11 +24,11 @@
                         <span class="m-2">Contraseña: </span>
                     </div>
                     <div class="col-md-8">
-                        <input type="password" class="form-control" name="password" id="password" placeholder="Contraseña de usuario" required autofocus>
+                        <input type="password" [(ngModel)]="usuario.password" class="form-control" name="password" id="password" placeholder="Contraseña de usuario" required autofocus>
                     </div>
                 </div>
                 <div class="row justify-content-center">
-                    <button class="btn">Ingresar</button>
+                    <button class="btn" (click)="login()">Ingresar</button>
                 </div>
             </div>
         </div>

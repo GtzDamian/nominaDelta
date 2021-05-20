@@ -1,7 +1,19 @@
-<div class="navbar navbar-expand-lg">
-    <div class="container d-flex justify-content-end p-0">
-            <div class="col-3 text-right">
-                <span><b>Usuario:</b>&nbsp;{{usuario}}</span>
-            </div>
+<nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container justify-content-end">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li *ngIf="authService.isAuthenticated()" class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle btn" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <b>Usuario: </b>{{authService.usuario.username}}
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item btn" (click)="logout()">Cerrar Sesión</a>
+                </div>
+              </li>
+            </ul>
+        </div>
     </div>
-</div>
+</nav>

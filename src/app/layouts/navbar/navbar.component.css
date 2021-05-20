@@ -3,7 +3,12 @@
     
 }
 
-span{
-    color:white;
-    font-weight: 500;
+ul,a,li,span{
+    color: white !important;
+    font-weight: 900 !important;
+
+}
+
+.dropdown-menu > a{
+    color: black !important;
 }

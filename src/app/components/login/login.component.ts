@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Usuario } from '../../models/dto/usuario';
 import Swal from 'sweetalert2';
 import { AuthService } from '../../models/services/auth.service';
-import { Router, Routes, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -21,21 +21,33 @@ export class LoginComponent implements OnInit {
     this.usuario = new Usuario();
    }
 
-  ngOnInit(): void {
+  ngOnInit(){
+    if(this.authService.isAuthenticated()){
+      Swal.fire('Bienvenido', `${this.authService.usuario.username} ya estás autenticado`, 'info');
+      this.router.navigate(['/sig/admin']);
+    }
   }
 
   login(): void{
-    console.log(this.usuario);
+    //console.log(this.usuario);
     if(this.usuario.username == null || this.usuario.password == null){
       Swal.fire('Error Login', 'Username o password vacías', 'error');
     }
 
     this.authService.login(this.usuario).subscribe(
       response => { 
-        console.log(response);
+        //console.log(response);
+    
+        let usuario = this.authService.usuario;
+        this.authService.guardarUsuario(response.access_token);
+        this.authService.guardarToken(response.access_token);
         this.router.navigate(['/sig/admin']);
-        Swal.fire('Bienvenido', this.usuario.username, 'success');
-      } 
+        Swal.fire('Bienvenido', `${this.authService.usuario.username}`, 'success');
+      }, err =>{
+        if(err.status == 400){
+          Swal.fire('Error Login', 'Usuario o contraseña incorrectos', 'error');
+        }
+      }
     )
   }
 }

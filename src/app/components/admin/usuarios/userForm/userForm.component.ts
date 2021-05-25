@@ -35,7 +35,7 @@ export class UserFormComponent implements OnInit {
       var id:number = params['id'];
       if(id){
         this.usuarioService.create(this.usuario, id).subscribe(usuario => {
-          this.router.navigate(['/admin/usuarios/empresa/' + id])
+          this.router.navigate(['/sig/admin/usuarios/empresa/' + id])
         })
       }
     })
@@ -46,7 +46,7 @@ export class UserFormComponent implements OnInit {
       var id:number = params['id'];
       if(id){
         this.usuarioService.update(this.usuario).subscribe(usuario => {
-          this.router.navigate(['/admin/usuarios/empresa/' + id])
+          this.router.navigate(['/sig/admin/usuarios/empresa/' + id])
         })
       }
     })

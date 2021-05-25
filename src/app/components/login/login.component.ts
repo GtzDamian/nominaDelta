@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
 
   title:String = " Sistema de Información Gerencial - Nómina";
   usuario!: Usuario;
+  role: string = "ROLE_ADMIN";
 
   constructor(
     private authService: AuthService,
@@ -24,7 +25,12 @@ export class LoginComponent implements OnInit {
   ngOnInit(){
     if(this.authService.isAuthenticated()){
       Swal.fire('Bienvenido', `${this.authService.usuario.username} ya estás autenticado`, 'info');
-      this.router.navigate(['/sig/admin']);
+      if(this.authService.hasRole(this.role) == true){
+        this.router.navigate(['/sig/admin']);
+        Swal.fire('Bienvenido', `${this.authService.usuario.username}`, 'success');
+      }else{
+        this.router.navigate(['/home']);
+      }
     }
   }
 
@@ -36,13 +42,16 @@ export class LoginComponent implements OnInit {
 
     this.authService.login(this.usuario).subscribe(
       response => { 
-        //console.log(response);
     
         let usuario = this.authService.usuario;
         this.authService.guardarUsuario(response.access_token);
         this.authService.guardarToken(response.access_token);
-        this.router.navigate(['/sig/admin']);
-        Swal.fire('Bienvenido', `${this.authService.usuario.username}`, 'success');
+        if(this.authService.hasRole(this.role) == true){
+          this.router.navigate(['/sig/admin']);
+          Swal.fire('Bienvenido', `${this.authService.usuario.username}`, 'success');
+        }else{
+          this.router.navigate(['/home']);
+        }
       }, err =>{
         if(err.status == 400){
           Swal.fire('Error Login', 'Usuario o contraseña incorrectos', 'error');

@@ -7,6 +7,13 @@ export class Usuario {
     nombre!: string;
     apellido!: string;
     password!: string;
+    tConceptos!:boolean;
+    tDepartamentos!:boolean;
+    tPuestos!:boolean;
+    tEmpleados!:boolean;
+    tDivisiones!:boolean;
+    tUsuarios!:boolean;
+    tDatosGenerales!:boolean;
     createAt!: string;
     enabled!: boolean;
     empresa!: Empresa[];

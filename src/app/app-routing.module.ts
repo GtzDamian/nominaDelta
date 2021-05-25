@@ -6,12 +6,14 @@ import { UserFormComponent } from './components/admin/usuarios/userForm/userForm
 import { UsuariosComponent } from './components/admin/usuarios/usuarios.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
+import { AuthGuard } from './models/guards/auth.guard';
+import { RoleGuard } from './models/guards/role.guard';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: 'home', component: HomeComponent},
   {path: 'sig/login', component: LoginComponent},
-  {path: 'sig/admin', component: EmpresasComponent},
+  {path: 'sig/admin', component: EmpresasComponent, canActivate: [AuthGuard, RoleGuard], data:{role: 'ROLE_ADMIN'}},
   {path: 'sig/admin/empresas', component: EmpFormComponent},
   {path: 'sig/admin/empresas/:id', component: EmpFormComponent},
   {path: 'sig/admin/usuarios/empresa/:id', component: UsuariosComponent},

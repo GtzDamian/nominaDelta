@@ -40,6 +40,42 @@
                         <input [(ngModel)]="usuario.password" type="password" class="form-control" name="password" id="password" required autofocus>
                     </div>
                 </div>
+                <div class="row mt-3 justify-content-center">
+                    <h3>Permisos</h3>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-6 ">
+                        <div class="row justify-content-center">
+                            <h4 class="m-0">Tablas</h4>
+                        </div>
+                        <div class="row d-flex align-items-center mt-1 px-3">
+                            <input type="checkbox" [(ngModel)]="usuario.tConceptos" name="tConceptos" id="tConceptos">&nbsp; Conceptos
+                        </div>
+                        <div class="row d-flex align-items-center mt-1 px-3">
+                            <input type="checkbox" [(ngModel)]="usuario.tDepartamentos" name="tDepartamentos" id="tDepartamentos">&nbsp; Departamentos
+                        </div>
+                        <div class="row d-flex align-items-center mt-1 px-3">
+                            <input type="checkbox" [(ngModel)]="usuario.tPuestos" name="tPuestos" id="tPuestos">&nbsp; Puestos
+                        </div>
+                        <div class="row d-flex align-items-center mt-1 px-3">
+                            <input type="checkbox" [(ngModel)]="usuario.tEmpleados" name="tEmpleados" id="tEmpleados">&nbsp; Empleados
+                        </div>
+                        <div class="row d-flex align-items-center mt-1 px-3">
+                            <input type="checkbox" [(ngModel)]="usuario.tDivisiones" name="tDivisiones" id="tDivisiones">&nbsp; Divisiones
+                        </div>
+                        <div class="row d-flex align-items-center mt-1 px-3">
+                            <input type="checkbox" [(ngModel)]="usuario.tUsuarios" name="tUsuarios" id="tUsuarios">&nbsp; Usuarios
+                        </div>
+                        <div class="row d-flex align-items-center mt-1 px-3">
+                            <input type="checkbox" [(ngModel)]="usuario.tDatosGenerales" name="tDatosGenerales" id="tDatosGenerales">&nbsp; Datos Generales
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row justify-content-center">
+                            <h4 class="m-0">Consultas</h4>
+                        </div>
+                    </div>
+                </div>
                 <div class="row mt-4 justify-content-center">
                     <div class="col-5 text-center">
                         <button class="btn btn-secondary" (click)="back()">Cancelar</button>

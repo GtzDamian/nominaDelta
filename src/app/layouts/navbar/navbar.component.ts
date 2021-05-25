@@ -33,7 +33,7 @@ export class NavbarComponent implements OnInit {
       if (result.isConfirmed) {
         this.authService.logout();
         swal.fire(
-          'Cesión cerrada',
+          'Sesión cerrada',
           'Gracias por usar el Sistema de Información Gerencial',
           'success'
         )

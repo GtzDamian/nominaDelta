@@ -52,8 +52,16 @@ export class AuthService {
     this._usuario.nombre = payload.nombre;
     this._usuario.apellido = payload.apellido;
     this._usuario.username = payload.user_name;
-    this._usuario.empresa = payload.empresa;
+    this._usuario.empresa = payload.empresa.rfc;
     this._usuario.roles = payload.authorities;
+
+    this._usuario.tConceptos = payload.tConceptos;
+    this._usuario.tDepartamentos = payload.tConceptos;
+    this._usuario.tPuestos = payload.tPuestos;
+    this._usuario.tEmpleados = payload.tEmpleados;
+    this._usuario.tDivisiones = payload.tDivisiones;
+    this._usuario.tUsuarios = payload.tUsuarios;
+    this._usuario.tDatosGenerales = payload.tDatosGenerales;
     sessionStorage.setItem('usuario', JSON.stringify(this._usuario));
   }
 

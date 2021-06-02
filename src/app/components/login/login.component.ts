@@ -28,14 +28,14 @@ export class LoginComponent implements OnInit {
       if(this.authService.hasRole(this.role) == true){
         this.router.navigate(['/sig/admin']);
         Swal.fire('Bienvenido', `${this.authService.usuario.username}`, 'success');
+        
       }else{
-        this.router.navigate(['/home']);
+        this.router.navigate(['/sig/home/', this.authService.usuario.empresa]);
       }
     }
   }
 
   login(): void{
-    //console.log(this.usuario);
     if(this.usuario.username == null || this.usuario.password == null){
       Swal.fire('Error Login', 'Username o password vacías', 'error');
     }
@@ -47,10 +47,11 @@ export class LoginComponent implements OnInit {
         this.authService.guardarUsuario(response.access_token);
         this.authService.guardarToken(response.access_token);
         if(this.authService.hasRole(this.role) == true){
+          console.log(this.authService.usuario.empresa);
           this.router.navigate(['/sig/admin']);
           Swal.fire('Bienvenido', `${this.authService.usuario.username}`, 'success');
         }else{
-          this.router.navigate(['/home']);
+          this.router.navigate(['/sig/home/', this.authService.usuario.empresa]);
         }
       }, err =>{
         if(err.status == 400){

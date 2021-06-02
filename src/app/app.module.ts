@@ -21,6 +21,7 @@ import { HomeComponent } from './components/home/home.component';
 import { AuthService } from './models/services/auth.service';
 
 import { TokenInterceptor } from './models/interceptors/token.interceptor';
+import { InicioComponent } from './components/user/inicio/inicio.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { TokenInterceptor } from './models/interceptors/token.interceptor';
     EmpFormComponent,
     UserFormComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    InicioComponent
   ],
   imports: [
     BrowserModule,

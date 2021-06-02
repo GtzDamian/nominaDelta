@@ -1,19 +1,51 @@
 <nav class="navbar navbar-expand-lg navbar-light">
-    <div class="container justify-content-end">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-              <li *ngIf="authService.isAuthenticated()" class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle btn" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <b>Usuario: </b>{{authService.usuario.username}}
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item btn" (click)="logout()">Cerrar Sesión</a>
-                </div>
-              </li>
-            </ul>
-        </div>
+  <div class="container justify-content-end">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li *ngIf="this.authService.hasRole('ROLE_USER') && authService.isAuthenticated() && router.url !== '/home'" class="nav-item">
+          <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span>Inicio</span>
+          </a>
+        </li>
+        <li *ngIf="this.authService.hasRole('ROLE_USER') && authService.isAuthenticated() && router.url !== '/home'" class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span>Tablas</span>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a *ngIf="this.authService.usuario.tConceptos === true" class="dropdown-item btn">Conceptos</a>
+            <a *ngIf="this.authService.usuario.tDepartamentos === true" class="dropdown-item btn">Departamentos</a>
+            <a *ngIf="this.authService.usuario.tPuestos === true" class="dropdown-item btn">Puestos</a>
+            <a *ngIf="this.authService.usuario.tEmpleados === true" class="dropdown-item btn">Empleados</a>
+            <div *ngIf="this.authService.usuario.tDivisiones === true || this.authService.usuario.tUsuarios === true || this.authService.usuario.tDatosGenerales === true"  class="dropdown-divider"></div>
+            <a *ngIf="this.authService.usuario.tDivisiones === true" class="dropdown-item btn">Divisiones</a>
+            <a *ngIf="this.authService.usuario.tUsuarios === true" class="dropdown-item btn">Usuarios</a>
+            <a *ngIf="this.authService.usuario.tDatosGenerales === true" class="dropdown-item btn">Datos Generales</a>
+          </div>
+        </li>
+        <li *ngIf="this.authService.hasRole('ROLE_USER') && authService.isAuthenticated() && router.url !== '/home'" class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span>Consultas</span>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item btn">Por División</a>
+            <a class="dropdown-item btn">Por Concepto</a>
+            <a class="dropdown-item btn">Por Empleado</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item btn">Empleado</a>
+          </div>
+        </li>
+        <li *ngIf="authService.isAuthenticated() && router.url !== '/home'" class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <b>Usuario: </b>{{authService.usuario.username}}
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item btn " (click)="logout()">Cerrar Sesión</a>
+          </div>
+        </li>
+      </ul>
     </div>
+  </div>
 </nav>

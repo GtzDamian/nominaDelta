@@ -5,6 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {Route, Router} from '@angular/router';
 import { map, catchError, tap } from 'rxjs/operators';
 import { AuthService} from './auth.service';
+import swal from 'sweetalert2';
 
 @Injectable()
 export class EmpresaService {
@@ -38,7 +39,15 @@ export class EmpresaService {
   }
 
   create(empresa: Empresa):Observable<Empresa[]>{
-    return this.http.post<Empresa[]>(this.urlEndPoint, empresa)
+    return this.http.post<Empresa[]>(this.urlEndPoint, empresa).pipe(
+     catchError(e => {
+      if(e.status == 500){
+        swal.fire( e.error.mensaje,'Verifique campos vacíos y RFC duplicado', 'error');
+      }
+      return throwError(e);
+     })
+
+    )
   }
 
   getEmpresa(id:number): Observable<Empresa>{
@@ -46,10 +55,18 @@ export class EmpresaService {
   }
 
   update(empresa: Empresa): Observable<Empresa>{
-    return this.http.put<Empresa>(`${this.urlEndPoint}/${empresa.id}`, empresa )
+    return this.http.put<Empresa>(`${this.urlEndPoint}/${empresa.rfc}`, empresa ).pipe(
+      catchError(e => {
+       if(e.status == 500){
+         swal.fire( e.error.mensaje,'Verifique campos vacíos y RFC duplicado', 'error');
+       }
+       return throwError(e);
+      })
+ 
+     )
   }
 
-  delete(id:  number):  Observable<Empresa>{
+  delete(id:  string):  Observable<Empresa>{
     return this.http.delete<Empresa>(`${this.urlEndPoint}/${id}`);
   }
 }

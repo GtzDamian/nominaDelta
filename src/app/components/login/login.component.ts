@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
       Swal.fire('Bienvenido', `${this.authService.usuario.username} ya estás autenticado`, 'info');
       if(this.authService.hasRole(this.role) == true){
         this.router.navigate(['/sig/admin']);
-        Swal.fire('Bienvenido', `${this.authService.usuario.username}`, 'success');
+        Swal.fire('Bienvenido', `${this.authService.usuario.username} ya estás autenticado`, 'info');
         
       }else{
         this.router.navigate(['/sig/home/', this.authService.usuario.empresa]);
@@ -52,6 +52,7 @@ export class LoginComponent implements OnInit {
           Swal.fire('Bienvenido', `${this.authService.usuario.username}`, 'success');
         }else{
           this.router.navigate(['/sig/home/', this.authService.usuario.empresa]);
+          Swal.fire('Bienvenido', `${this.authService.usuario.username}`, 'success');
         }
       }, err =>{
         if(err.status == 400){

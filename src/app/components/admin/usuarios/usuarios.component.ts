@@ -5,6 +5,7 @@ import { Usuario } from '../../../models/dto/usuario';
 import { Empresa } from '../../../models/dto/empresa';
 import { UsuarioService } from '../../../models/services/usuario.service';
 import { EmpresaService } from '../../../models/services/empresa.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-usuarios',
@@ -12,6 +13,8 @@ import { EmpresaService } from '../../../models/services/empresa.service';
   styleUrls: ['./usuarios.component.css']
 })
 export class UsuariosComponent implements OnInit {
+
+  rfc!: string;
 
   empresas!:Empresa[];
   public empresa: Empresa = new Empresa();
@@ -23,31 +26,24 @@ export class UsuariosComponent implements OnInit {
     private usuarioService: UsuarioService,
     private empresaService: EmpresaService, 
     private router: Router, 
-    private activatedRoute: ActivatedRoute) {
+    private activatedRoute: ActivatedRoute,
+    private location: Location) {
    }
 
   ngOnInit(): void {
-    this.cargarUsuarios();
-    this.cargarEmpresa();
+    var datos: any = this.location.getState();
+    var rfc = Object.values(datos)[0];
+    this.cargarUsuarios(rfc);
+    this.cargarEmpresa(rfc);
     
   }
 
-  cargarUsuarios(): void{
-    this.activatedRoute.params.subscribe(params => {
-      let id = params['id']
-      if(id){
-        this.usuarioService.getUsuarios(id).subscribe( (usuarios) => this.usuarios = usuarios)
-      }
-    })
+  cargarUsuarios(rfc: any): void{
+    this.usuarioService.getUsuarios(rfc).subscribe( (usuarios) => this.usuarios = usuarios) 
   }
 
-  cargarEmpresa(): void{
-    this.activatedRoute.params.subscribe(params => {
-      let id = params['id']
-      if(id){
-        this.empresaService.getEmpresa(id).subscribe((empresa) => this.empresa = empresa)
-      }
-    })
+  cargarEmpresa(rfc: any): void{
+    this.empresaService.getEmpresa(rfc).subscribe((empresa) => this.empresa = empresa)
   }
 
   borrarUsuario(usuario: Usuario): void{

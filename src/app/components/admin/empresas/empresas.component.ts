@@ -30,7 +30,7 @@ export class EmpresasComponent implements OnInit {
   public delete(empresa: Empresa):void{
     Swal.fire({
       title: 'Borrar Empresa',
-      text: `¿Desea eliminar a ${empresa.nombre}?`,
+      text: `¿Desea eliminar a ${empresa.razonSocial}?`,
       icon: 'warning',
       reverseButtons: true,
       showCancelButton: true,
@@ -40,9 +40,9 @@ export class EmpresasComponent implements OnInit {
       confirmButtonText: 'Aceptar'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.empresaService.delete(empresa.id).subscribe(
+        this.empresaService.delete(empresa.rfc).subscribe(
           response => {
-            Swal.fire('Eliminada', `${empresa.nombre} ha sido eliminada`,'success').
+            Swal.fire('Eliminada', `${empresa.razonSocial} ha sido eliminada`,'success').
             then(function(){ 
               location.reload();
             });

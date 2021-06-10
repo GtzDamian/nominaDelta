@@ -1,13 +1,13 @@
 <header>
     <div class="navbar navbar-expand-lg">
-        <div class="container d-flex p-0">
-            <div class="col-xs-3 ">
-                <a routerLink="/home"><img src="./assets/logo/logo_header.png" class="logo-header" alt="logo-delta"></a>
+        <div class="container">
+            <div class="col-3">
+                <img [src]="'./assets/logo/logo_header.png'" class=" w-100">
             </div>
-            <div class="col-xs-auto flex-fill text-center">
-                <p>{{title}}</p>
+            <div class="col-9 text-center align-items-center">
+                <p class="m-0">{{title}}</p>
                 <hr class="my-1">
-                <p>{{subTitle}}</p>
+                <p class="m-0">{{subTitle}}</p>
             </div>
         </div>
     </div>

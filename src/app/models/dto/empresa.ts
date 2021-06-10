@@ -1,9 +1,7 @@
 export class Empresa {
-    id!:number;
-    rfc!:String;
-    nombre!: String;
+    rfc!:string;
+    razonSocial!: string;
     enabled!: boolean;
-    createAt!: String;
-    //usuarios!: Usuarios[];
+    createAt!: string;
 }
 

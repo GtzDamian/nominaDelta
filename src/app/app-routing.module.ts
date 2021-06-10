@@ -17,7 +17,8 @@ const routes: Routes = [
   {path: 'sig/admin', component: EmpresasComponent, canActivate: [AuthGuard, RoleGuard], data:{role: 'ROLE_ADMIN'}},
   {path: 'sig/admin/empresas', component: EmpFormComponent},
   {path: 'sig/admin/empresas/:id', component: EmpFormComponent},
-  {path: 'sig/admin/usuarios/empresa/:id', component: UsuariosComponent},
+ /* {path: 'sig/admin/usuarios/empresa/:id', component: UsuariosComponent},*/
+ {path: 'sig/admin/usuarios/empresa', component: UsuariosComponent},
   {path: 'sig/admin/usuarios/empresa/:id/usuario', component: UserFormComponent},
   {path: 'sig/admin/usuarios/empresa/:id/usuario/:id_usr', component: UserFormComponent},
   {path: 'sig/home/:id', component: InicioComponent}

@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <div class="container mt-3">
-        <div class="row" *ngIf="!empresa.id else altTitle">
+        <div class="row" *ngIf="rfcExists == false else altTitle">
             <h2>Agregar Nueva Empresa</h2>
         </div>
         <ng-template #altTitle>
@@ -15,7 +15,10 @@
                         <span>RFC:</span>
                     </div>
                     <div class="col-8 p-0">
-                        <input type="text" oninput="this.value = this.value.toUpperCase()"  [(ngModel)]="empresa.rfc" class="form-control" name="rfc" id="rfc" autofocus required>
+                        <input *ngIf="rfcExists == false else altInput" type="text" oninput="this.value = this.value.toUpperCase()"   [(ngModel)]="empresa.rfc" class="form-control" name="rfc" id="rfc" maxlength="13" autofocus required>
+                        <ng-template #altInput>
+                            <input type="text" oninput="this.value = this.value.toUpperCase()"   [(ngModel)]="empresa.rfc" class="form-control" name="rfc" id="rfc" maxlength="13" disabled>
+                        </ng-template>
                     </div>
                 </div>
                 <div class="row mt-3 justify-content-center">
@@ -23,18 +26,20 @@
                         <span>NOMBRE:</span>
                     </div>
                     <div class="col-8 p-0">
-                        <input type="text" oninput="this.value = this.value.toUpperCase()" [(ngModel)]="empresa.nombre" class="form-control" name="nombre" id="nombre" autofocus required>
+                        <input type="text" oninput="this.value = this.value.toUpperCase()" [(ngModel)]="empresa.razonSocial" class="form-control" name="razonSocial" id="razonSocial" autofocus required>
                     </div>
                 </div>
                 <div class="row mt-4 justify-content-center">
                     <div class="col-5 text-center">
                         <button class="btn btn-secondary" [routerLink]="['/sig/admin']">Cancelar</button>
                     </div>
-                    <div class="col-5 text-center" *ngIf="!empresa.id else altBtn">
+                    <div class="col-5 text-center" *ngIf="rfcExists == false else altBtn">
                         <button class="btn btn-agregar"  (click)="create()" >Agregar</button>
                     </div>
                     <ng-template #altBtn>
-                        <button class="btn btn-agregar"  (click)="update()" >Editar</button>
+                        <div class="col-5 text-center" >
+                            <button class="btn btn-agregar"  (click)="update()" >Editar</button>
+                        </div>
                     </ng-template>
                 </div>
             </div>

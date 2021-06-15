@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Usuario } from '../../../../models/dto/usuario';
 import { UsuarioService } from '../../../../models/services/usuario.service';
 import {Router, Routes, ActivatedRoute} from '@angular/router';
+import { Location } from '@angular/common';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-userForm',
@@ -15,7 +17,8 @@ export class UserFormComponent implements OnInit {
   constructor( 
     private usuarioService: UsuarioService, 
     private router: Router,
-    private activatedRoute: ActivatedRoute) { }
+    private activatedRoute: ActivatedRoute,
+    private location: Location) { }
 
   ngOnInit(): void {
     this.cargarUsuario();
@@ -32,9 +35,10 @@ export class UserFormComponent implements OnInit {
 
   public create():void{
     this.activatedRoute.params.subscribe(params => {
-      var id:number = params['id'];
+      var id:any = params['id'];
       if(id){
         this.usuarioService.create(this.usuario, id).subscribe(usuario => {
+          Swal.fire('Registro exitoso', this.usuario.username + ' registrado correctamente', 'success');
           this.router.navigate(['/sig/admin/usuarios/empresa/' + id])
         })
       }
@@ -45,20 +49,20 @@ export class UserFormComponent implements OnInit {
     this.activatedRoute.params.subscribe(params => {
       var id:number = params['id'];
       if(id){
-        this.usuarioService.update(this.usuario).subscribe(usuario => {
-          this.router.navigate(['/sig/admin/usuarios/empresa/' + id])
-        })
+        if(this.usuario.username == null || this.usuario.username == '' || this.usuario.nombre ==  null || this.usuario.nombre == '' || this.usuario.apellido == null || this.usuario.apellido == '' || this.usuario.password == null || this.usuario.password == ''){
+          Swal.fire('Error', 'Error al editar usuario', 'error' )
+        }else{
+          this.usuarioService.update(this.usuario).subscribe(usuario => {
+            Swal.fire('Actualización exitosa', 'El usuario se ha actualizado correctamente', 'success')
+            this.router.navigate(['/sig/admin/usuarios/empresa/' + id])
+          })
+        }
       }
     })
   }
 
   public back():void{
-    this.activatedRoute.params.subscribe(params => {
-      var id:number = params['id'];
-      if(id){
-        this.router.navigate(['/sig/admin/usuarios/empresa/' + id])
-      }
-    })
+    this.location.back();
   }
 }
 

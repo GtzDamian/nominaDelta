@@ -34,12 +34,26 @@ export class UsuarioService {
     return this.http.get<Usuario>(this.urlEndPoint + '/' + id );
   }
 
-  create(usuario: Usuario, id: number): Observable<Usuario[]>{
-    return this.http.post<Usuario[]>(this.urlEndPoint + '/empresa/' + id, usuario, {headers: this.httpHeaders})
+  create(usuario: Usuario, id: any): Observable<Usuario[]>{
+    return this.http.post<Usuario[]>(this.urlEndPoint + '/empresa/' + id, usuario, {headers: this.httpHeaders}).pipe(
+      catchError(e => {
+        if(e.status == 500){
+          swal.fire(e.error.mensaje, 'Verifique campos vacíos y que su nombre de usuario esté en el formato correcto', 'error')
+        }
+        return throwError(e);
+      })
+    )
   }
 
   update(usuario: Usuario): Observable<Usuario>{
-    return this.http.put<Usuario>(this.urlEndPoint + '/' + usuario.id , usuario , {headers: this.httpHeaders})
+    return this.http.put<Usuario>(this.urlEndPoint + '/' + usuario.id , usuario , {headers: this.httpHeaders}).pipe(
+      catchError(e => {
+        if(e.status == 500){
+          swal.fire(e.error.mensaje, 'Verifique campos vacíos y que su nombre de usuario esté en el formato correcto', 'error');
+        }
+        return throwError(e);
+      })
+    )
   }
 
   delete(id: number): Observable<Usuario>{

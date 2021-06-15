@@ -5,7 +5,8 @@ import { Usuario } from '../../../models/dto/usuario';
 import { Empresa } from '../../../models/dto/empresa';
 import { UsuarioService } from '../../../models/services/usuario.service';
 import { EmpresaService } from '../../../models/services/empresa.service';
-import { Location } from '@angular/common';
+import { AuthService } from 'src/app/models/services/auth.service';
+
 
 @Component({
   selector: 'app-usuarios',
@@ -14,7 +15,7 @@ import { Location } from '@angular/common';
 })
 export class UsuariosComponent implements OnInit {
 
-  rfc!: string;
+  rfc!: any;
 
   empresas!:Empresa[];
   public empresa: Empresa = new Empresa();
@@ -25,16 +26,24 @@ export class UsuariosComponent implements OnInit {
   constructor(
     private usuarioService: UsuarioService,
     private empresaService: EmpresaService, 
-    private router: Router, 
+    public router: Router, 
     private activatedRoute: ActivatedRoute,
-    private location: Location) {
+    private authService: AuthService) {
+      this.activatedRoute.params.subscribe(params => {
+        let rfcUrl = params['id'];
+        this.rfc = rfcUrl;
+    });
    }
 
   ngOnInit(): void {
-    var datos: any = this.location.getState();
-    var rfc = Object.values(datos)[0];
-    this.cargarUsuarios(rfc);
-    this.cargarEmpresa(rfc);
+    var rfcUsuario: any = this.authService.usuario.empresa;
+    var authorities: any = this.authService.usuario.roles;
+   if(rfcUsuario == this.rfc || (rfcUsuario == "DCO821008122"  && authorities == "ROLE_ADMIN" )){
+     this.cargarUsuarios(this.rfc);
+     this.cargarEmpresa(this.rfc);
+   }else{
+     Swal.fire('Error', 'error', 'error' );
+   }
     
   }
 

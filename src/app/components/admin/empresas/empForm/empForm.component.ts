@@ -39,10 +39,14 @@ export class EmpFormComponent implements OnInit {
   }
 
   public create():void{
-    this.empresaService.create(this.empresa).subscribe(empresa => {
-      Swal.fire('Registro exitoso', this.empresa.razonSocial + ' registrada correctamente', 'success');
-      this.router.navigate(['/sig/admin'])
-    })
+    if(this.empresa.rfc == null ||  this.empresa.rfc == '' || this.empresa.razonSocial == null || this.empresa.razonSocial == ''){
+      Swal.fire('Error', 'RFC o Razón Social vacíos', 'error')
+    }else{
+      this.empresaService.create(this.empresa).subscribe(empresa => {
+        Swal.fire('Registro exitoso', this.empresa.razonSocial + ' registrada correctamente', 'success');
+        this.router.navigate(['/sig/admin'])
+      })
+    }
   }
 
   cargarEmpresa(): void{
@@ -55,8 +59,13 @@ export class EmpFormComponent implements OnInit {
   }
 
   public update(): void{
-    this.empresaService.update(this.empresa).subscribe(empresa =>
-      {this.router.navigate(['/sig/admin'])
-    })
+    if(this.empresa.rfc == null ||  this.empresa.rfc == '' || this.empresa.razonSocial == null || this.empresa.razonSocial == ''){
+      Swal.fire('Error', 'RFC o Razón Social vacíos', 'error')
+    }else{
+      this.empresaService.update(this.empresa).subscribe(empresa =>{
+        Swal.fire('Actualización exitosa', 'Empresa actualizada exitosamente', 'success');
+        this.router.navigate(['/sig/admin'])
+      })
+    }
   }
 }

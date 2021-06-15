@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { EmpresaService } from '../../../models/services/empresa.service';
+import { AuthService } from 'src/app/models/services/auth.service';
 
 @Component({
   selector: 'app-empresas',
@@ -17,7 +18,11 @@ export class EmpresasComponent implements OnInit {
   empresas!: Empresa[];
   public empresa: Empresa = new Empresa();
 
-  constructor(private title: Title, private empresaService: EmpresaService, private router: Router) {
+  constructor(
+    private title: Title, 
+    private empresaService: EmpresaService, 
+    private router: Router,
+    public authService: AuthService) {
     this.title.setTitle("Admin | Información Gerencial - Nómina");
    }
 
@@ -52,5 +57,10 @@ export class EmpresasComponent implements OnInit {
     })
   }
 
+  listarEmpleados(rfc: any){
+    var empresaRfc = btoa(rfc);
+    this.router.navigate(['/sig/admin/usuarios/empresa/' + empresaRfc])
+
+  }
 
 }

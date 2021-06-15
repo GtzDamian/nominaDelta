@@ -13,7 +13,7 @@
             <table class="table table-striped">
                 <thead class="">
                     <th>RFC</th>
-                    <th>Nombre</th>
+                    <th>Razón Social</th>
                     <th>Fecha</th>
                     <th></th>
                     <th></th>
@@ -25,7 +25,7 @@
                         <td>{{empresa.razonSocial}}</td>
                         <td>{{empresa.createAt}}</td>
                         <!--<td><button class="btn" title="Administrar usuarios" [routerLink]="['/sig/admin/usuarios/empresa', empresa.rfc]"><i class="fas fa-users-cog"></i></button></td>-->
-                        <td><button class="btn" title="Administrar usuarios" [routerLink]="['/sig/admin/usuarios/empresa']" [state]=empresa><i class="fas fa-users-cog"></i></button></td>
+                        <td><button class="btn" title="Administrar usuarios" [routerLink]="['/sig/admin/usuarios/empresa', empresa.rfc]"><i class="fas fa-users-cog"></i></button></td>
                         <td><button class="btn" title="Editar Empresa" [routerLink]="['/sig/admin/empresas', empresa.rfc]"><i class="fas fa-edit"></i></button></td>
                         <td><button class="btn" title="Eliminar Empresa" (click)="delete(empresa)"><i class="fas fa-trash-alt"></i></button></td>
                     </tr>

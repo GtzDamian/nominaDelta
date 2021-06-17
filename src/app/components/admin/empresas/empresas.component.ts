@@ -23,7 +23,7 @@ export class EmpresasComponent implements OnInit {
     private empresaService: EmpresaService, 
     private router: Router,
     public authService: AuthService) {
-    this.title.setTitle("Admin | Información Gerencial - Nómina");
+    this.title.setTitle("Admin | Información Gerencial - Nómina"); 
    }
 
   ngOnInit(): void {

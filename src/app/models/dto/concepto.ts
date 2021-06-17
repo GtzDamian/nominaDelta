@@ -1,5 +1,7 @@
+import { Empresa } from "./empresa";
+
 export class Concepto {
-    rfc!: string;
+    rfc!: Empresa;
     concepto!: number;
     nombre!: string;
     fecha!: string;

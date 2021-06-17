@@ -6,6 +6,7 @@ import { UserFormComponent } from './components/admin/usuarios/userForm/userForm
 import { UsuariosComponent } from './components/admin/usuarios/usuarios.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
+import { ConceptoComponent } from './components/user/concepto/concepto.component';
 import { InicioComponent } from './components/user/inicio/inicio.component';
 import { AuthGuard } from './models/guards/auth.guard';
 import { RoleGuard } from './models/guards/role.guard';
@@ -20,7 +21,8 @@ const routes: Routes = [
   {path: 'sig/admin/usuarios/empresa/:id', component: UsuariosComponent},
   {path: 'sig/admin/usuarios/empresa/:id/usuario', component: UserFormComponent},
   {path: 'sig/admin/usuarios/empresa/:id/usuario/:id_usr', component: UserFormComponent},
-  {path: 'sig/home/:id', component: InicioComponent}
+  {path: 'sig/home/:id', component: InicioComponent},
+  {path: 'sig/home/:id/conceptos', component: ConceptoComponent}
   
 ];
 

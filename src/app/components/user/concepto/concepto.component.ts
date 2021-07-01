@@ -5,12 +5,17 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { Concepto } from 'src/app/models/dto/concepto';
 
+
+declare var $: any;
+
 @Component({
   selector: 'app-concepto',
   templateUrl: './concepto.component.html',
   styleUrls: ['./concepto.component.css']
 })
 export class ConceptoComponent implements OnInit {
+
+  public concepto:Concepto = new Concepto();
 
   conceptos!: Concepto[];
 
@@ -32,6 +37,18 @@ export class ConceptoComponent implements OnInit {
         )
       }
     })  
+
   }
+  
+    filtro(){
+      this.activatedRoute.params.subscribe(params => {
+        let id = params['id']
+        if(id){
+          this.conceptoService.getConceptosFiltro(id, this.concepto.concepto, this.concepto.nombre).subscribe(
+            (conceptos) => {this.conceptos = conceptos}
+          )
+        }
+      }) 
+    }
 
 }

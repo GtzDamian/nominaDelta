@@ -5,7 +5,7 @@
         </div>
         <div class="row mt-3 ">
             <div class="col-4 text-center">
-                <span><b>Total de Conceptos: </b> {{conceptos.length}}</span>
+                <!--<span><b>Total de Conceptos: </b> {{conceptos.length}}</span>-->
             </div>
             <div class="col-4 text-center">
                 <i class="fas fa-file-pdf" style="color: #AD0B00; font-size: 20px;"></i> <span><b> Importar a PDF</b></span> &nbsp;
@@ -37,10 +37,10 @@
         </div>
         <div class="row mt-3 p-2" style="background-color: #3c5d77;">
             <div class="col-6">
-                <input class="form-control" type="text" placeholder="# Concepto">
+                <input id="concepto" name="concepto" class="form-control" type="text" placeholder="# Concepto" [(ngModel)]="concepto.concepto" (input)="filtro()">
             </div>
             <div class="col-6">
-                <input class="form-control" type="text" placeholder="Nombre de concepto">
+                <input id="nombre" name="nombre" class="form-control" type="text" placeholder="Nombre de concepto" [(ngModel)]="concepto.nombre" (input)="filtro()">
             </div> 
         </div>
     </div>

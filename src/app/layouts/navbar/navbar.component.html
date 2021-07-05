@@ -18,8 +18,8 @@
             <span>Tablas</span>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <button *ngIf="this.authService.usuario.tConceptos === true" class="dropdown-item btn" [routerLink]="this.router.url + '/conceptos'">Conceptos</button>
-            <a *ngIf="this.authService.usuario.tDepartamentos === true" class="dropdown-item btn">Departamentos</a>
+            <button *ngIf="this.authService.usuario.tConceptos === true" class="dropdown-item btn" [routerLink]="'/sig/home/' + this.authService.usuario.empresa + '/conceptos'">Conceptos</button>
+            <button *ngIf="this.authService.usuario.tDepartamentos === true" class="dropdown-item btn" [routerLink]="'/sig/home/' + this.authService.usuario.empresa + '/departamentos'">Departamentos</button>
             <a *ngIf="this.authService.usuario.tPuestos === true" class="dropdown-item btn">Puestos</a>
             <a *ngIf="this.authService.usuario.tEmpleados === true" class="dropdown-item btn">Empleados</a>
             <div *ngIf="this.authService.usuario.tDivisiones === true || this.authService.usuario.tUsuarios === true || this.authService.usuario.tDatosGenerales === true"  class="dropdown-divider"></div>

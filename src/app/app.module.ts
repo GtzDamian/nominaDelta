@@ -23,6 +23,7 @@ import { AuthService } from './models/services/auth.service';
 import { TokenInterceptor } from './models/interceptors/token.interceptor';
 import { InicioComponent } from './components/user/inicio/inicio.component';
 import { ConceptoComponent } from './components/user/concepto/concepto.component';
+import { DepartamentosComponent } from './components/user/departamentos/departamentos.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { ConceptoComponent } from './components/user/concepto/concepto.component
     LoginComponent,
     HomeComponent,
     InicioComponent,
-    ConceptoComponent
+    ConceptoComponent,
+    DepartamentosComponent
   ],
   imports: [
     BrowserModule,

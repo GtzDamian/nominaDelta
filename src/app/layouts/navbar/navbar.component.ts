@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/models/services/auth.service';
 import { Router } from '@angular/router';
 import swal from 'sweetalert2';
+import { Empresa } from 'src/app/models/dto/empresa';
 
 
 @Component({

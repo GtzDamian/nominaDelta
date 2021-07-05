@@ -7,6 +7,7 @@ import { UsuariosComponent } from './components/admin/usuarios/usuarios.componen
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { ConceptoComponent } from './components/user/concepto/concepto.component';
+import { DepartamentosComponent } from './components/user/departamentos/departamentos.component';
 import { InicioComponent } from './components/user/inicio/inicio.component';
 import { AuthGuard } from './models/guards/auth.guard';
 import { RoleGuard } from './models/guards/role.guard';
@@ -22,7 +23,8 @@ const routes: Routes = [
   {path: 'sig/admin/usuarios/empresa/:id/usuario', component: UserFormComponent},
   {path: 'sig/admin/usuarios/empresa/:id/usuario/:id_usr', component: UserFormComponent},
   {path: 'sig/home/:id', component: InicioComponent},
-  {path: 'sig/home/:id/conceptos', component: ConceptoComponent}
+  {path: 'sig/home/:id/conceptos', component: ConceptoComponent},
+  {path: 'sig/home/:id/departamentos', component: DepartamentosComponent}
   
 ];
 

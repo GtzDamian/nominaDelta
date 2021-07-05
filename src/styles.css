@@ -19,3 +19,6 @@ html, body{
   text-align: justify;
 }
   
+input{
+  border-bottom: 1px solid black !important;
+}

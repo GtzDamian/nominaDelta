@@ -19,6 +19,8 @@ export class ConceptoComponent implements OnInit {
 
   conceptos!: Concepto[];
 
+  mainUrl!: string;
+
   constructor(
     private conceptoService: ConceptoService,
     private authService: AuthService,
@@ -36,7 +38,9 @@ export class ConceptoComponent implements OnInit {
           (conceptos) => {this.conceptos = conceptos}
         )
       }
-    })  
+    }) 
+    
+    this.mainUrl= this.router.url;
 
   }
   

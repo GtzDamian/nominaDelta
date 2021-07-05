@@ -2,11 +2,9 @@ import { Injectable } from '@angular/core';
 import { Concepto } from '../dto/concepto';
 import { of, Observable, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {Route, Router} from '@angular/router';
-import { map, catchError, tap } from 'rxjs/operators';
+import {Router} from '@angular/router';
 import { AuthService} from './auth.service';
-import swal from 'sweetalert2';
-import { Identifiers } from '@angular/compiler';
+
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +23,17 @@ export class ConceptoService {
     return this.http.get<Concepto[]>(this.urlEndpoint + "/" + id);
   }
 
-  getConceptosFiltro(id: string, concepto: String, nombre: string): Observable<Concepto[]>{
+  getConceptosFiltro(id: string, concepto: any, nombre: any): Observable<Concepto[]>{
+    if(concepto == undefined){
+      concepto = "";
+    }
+    
+    if(nombre == undefined){
+     nombre = "";
+    }
+    
+   console.log(concepto + " " + nombre )
+
     let params:any = new URLSearchParams();
     params.append("concepto", concepto);
     params.append("nombre", nombre);

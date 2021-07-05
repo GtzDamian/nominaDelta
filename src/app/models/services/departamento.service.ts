@@ -18,7 +18,21 @@ export class DepartamentoService {
     private authService: AuthService
   ) { }
 
-  getConceptos(id: string):Observable<Departamento[]>{
+  getDepartamentos(id: string):Observable<Departamento[]>{
     return this.http.get<Departamento[]>(this.urlEndpoint + "/" + id);
+  }
+
+  getDepartamentosFiltro(id: string, departamento: any, nombre: any): Observable<Departamento[]>{
+    if(departamento == undefined){
+      departamento = "";
+    }  
+    if(nombre == undefined){
+     nombre = "";
+    }
+  
+    let params:any = new URLSearchParams();
+    params.append("departamentpo", departamento);
+    params.append("nombre", nombre);
+    return this.http.get<Departamento[]>(this.urlEndpoint + "/" + id + "/buscar/?departamento=" + departamento + "&nombre=" + nombre);
   }
 }

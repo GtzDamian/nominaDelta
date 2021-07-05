@@ -16,10 +16,7 @@ declare var $: any;
 export class ConceptoComponent implements OnInit {
 
   public concepto:Concepto = new Concepto();
-
   conceptos!: Concepto[];
-
-  mainUrl!: string;
 
   constructor(
     private conceptoService: ConceptoService,
@@ -30,29 +27,25 @@ export class ConceptoComponent implements OnInit {
       this.title.setTitle("Conceptos | Información Gerencial - Nómina");
     }
 
-  ngOnInit(): void {
-    this.activatedRoute.params.subscribe(params => {
-      let id = params['id']
+ngOnInit(): void {
+  this.activatedRoute.params.subscribe(params => {
+    let id = params['id']
+    if(id){
+      this.conceptoService.getConceptos(id).subscribe(
+        (conceptos) => {this.conceptos = conceptos}
+      )
+    }
+  }) 
+}
+  
+filtro(){
+  this.activatedRoute.params.subscribe(params => {
+    let id = params['id']
       if(id){
-        this.conceptoService.getConceptos(id).subscribe(
+        this.conceptoService.getConceptosFiltro(id, this.concepto.concepto, this.concepto.nombre).subscribe(
           (conceptos) => {this.conceptos = conceptos}
         )
       }
     }) 
-    
-    this.mainUrl= this.router.url;
-
   }
-  
-    filtro(){
-      this.activatedRoute.params.subscribe(params => {
-        let id = params['id']
-        if(id){
-          this.conceptoService.getConceptosFiltro(id, this.concepto.concepto, this.concepto.nombre).subscribe(
-            (conceptos) => {this.conceptos = conceptos}
-          )
-        }
-      }) 
-    }
-
 }

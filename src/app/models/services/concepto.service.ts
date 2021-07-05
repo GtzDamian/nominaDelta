@@ -26,14 +26,11 @@ export class ConceptoService {
   getConceptosFiltro(id: string, concepto: any, nombre: any): Observable<Concepto[]>{
     if(concepto == undefined){
       concepto = "";
-    }
-    
+    }  
     if(nombre == undefined){
      nombre = "";
     }
-    
-   console.log(concepto + " " + nombre )
-
+  
     let params:any = new URLSearchParams();
     params.append("concepto", concepto);
     params.append("nombre", nombre);

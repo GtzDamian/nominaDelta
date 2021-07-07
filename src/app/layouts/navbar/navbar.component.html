@@ -9,7 +9,7 @@
           <a class="nav-link active" aria-current="page" routerLink="/home"><i class="fas fa-home"></i> Menú Principal</a>
         </li>
         <li *ngIf="this.authService.hasRole('ROLE_USER') && authService.isAuthenticated() && router.url !== '/home'" class="nav-item">
-          <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link" [routerLink]="'/sig/home/' + this.authService.usuario.empresa " id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <span>Inicio</span>
           </a>
         </li>
@@ -20,7 +20,7 @@
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <button *ngIf="this.authService.usuario.tConceptos === true" class="dropdown-item btn" [routerLink]="'/sig/home/' + this.authService.usuario.empresa + '/conceptos'">Conceptos</button>
             <button *ngIf="this.authService.usuario.tDepartamentos === true" class="dropdown-item btn" [routerLink]="'/sig/home/' + this.authService.usuario.empresa + '/departamentos'">Departamentos</button>
-            <a *ngIf="this.authService.usuario.tPuestos === true" class="dropdown-item btn">Puestos</a>
+            <button *ngIf="this.authService.usuario.tPuestos === true" class="dropdown-item btn" [routerLink]="'/sig/home/' + this.authService.usuario.empresa + '/puestos'">Puestos</button>
             <a *ngIf="this.authService.usuario.tEmpleados === true" class="dropdown-item btn">Empleados</a>
             <div *ngIf="this.authService.usuario.tDivisiones === true || this.authService.usuario.tUsuarios === true || this.authService.usuario.tDatosGenerales === true"  class="dropdown-divider"></div>
             <a *ngIf="this.authService.usuario.tDivisiones === true" class="dropdown-item btn">Divisiones</a>

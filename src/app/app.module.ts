@@ -24,6 +24,7 @@ import { TokenInterceptor } from './models/interceptors/token.interceptor';
 import { InicioComponent } from './components/user/inicio/inicio.component';
 import { ConceptoComponent } from './components/user/concepto/concepto.component';
 import { DepartamentosComponent } from './components/user/departamentos/departamentos.component';
+import { PuestosComponent } from './components/user/puestos/puestos.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { DepartamentosComponent } from './components/user/departamentos/departam
     HomeComponent,
     InicioComponent,
     ConceptoComponent,
-    DepartamentosComponent
+    DepartamentosComponent,
+    PuestosComponent
   ],
   imports: [
     BrowserModule,

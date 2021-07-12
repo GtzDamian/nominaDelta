@@ -8,6 +8,7 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { ConceptoComponent } from './components/user/concepto/concepto.component';
 import { DepartamentosComponent } from './components/user/departamentos/departamentos.component';
+import { EmpleadosComponent } from './components/user/empleados/empleados.component';
 import { InicioComponent } from './components/user/inicio/inicio.component';
 import { PuestosComponent } from './components/user/puestos/puestos.component';
 import { AuthGuard } from './models/guards/auth.guard';
@@ -26,7 +27,8 @@ const routes: Routes = [
   {path: 'sig/home/:id', component: InicioComponent},
   {path: 'sig/home/:id/conceptos', component: ConceptoComponent},
   {path: 'sig/home/:id/departamentos', component: DepartamentosComponent},
-  {path: 'sig/home/:id/puestos', component: PuestosComponent}
+  {path: 'sig/home/:id/puestos', component: PuestosComponent},
+  {path: 'sig/home/:id/empleados', component: EmpleadosComponent}
   
 ];
 

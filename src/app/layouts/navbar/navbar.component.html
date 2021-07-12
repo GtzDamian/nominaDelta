@@ -21,7 +21,7 @@
             <button *ngIf="this.authService.usuario.tConceptos === true" class="dropdown-item btn" [routerLink]="'/sig/home/' + this.authService.usuario.empresa + '/conceptos'">Conceptos</button>
             <button *ngIf="this.authService.usuario.tDepartamentos === true" class="dropdown-item btn" [routerLink]="'/sig/home/' + this.authService.usuario.empresa + '/departamentos'">Departamentos</button>
             <button *ngIf="this.authService.usuario.tPuestos === true" class="dropdown-item btn" [routerLink]="'/sig/home/' + this.authService.usuario.empresa + '/puestos'">Puestos</button>
-            <a *ngIf="this.authService.usuario.tEmpleados === true" class="dropdown-item btn">Empleados</a>
+            <button *ngIf="this.authService.usuario.tEmpleados === true" class="dropdown-item btn" [routerLink]="'/sig/home/' + this.authService.usuario.empresa + '/empleados'">Empleados</button>
             <div *ngIf="this.authService.usuario.tDivisiones === true || this.authService.usuario.tUsuarios === true || this.authService.usuario.tDatosGenerales === true"  class="dropdown-divider"></div>
             <a *ngIf="this.authService.usuario.tDivisiones === true" class="dropdown-item btn">Divisiones</a>
             <a *ngIf="this.authService.usuario.tUsuarios === true" class="dropdown-item btn">Usuarios</a>

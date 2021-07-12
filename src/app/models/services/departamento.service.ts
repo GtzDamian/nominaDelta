@@ -31,8 +31,8 @@ export class DepartamentoService {
     }
   
     let params:any = new URLSearchParams();
-    params.append("departamentpo", departamento);
+    params.append("departamento", departamento);
     params.append("nombre", nombre);
-    return this.http.get<Departamento[]>(this.urlEndpoint + "/" + id + "/buscar/?departamento=" + departamento + "&nombre=" + nombre);
+    return this.http.get<Departamento[]>(this.urlEndpoint + "/" + id + "/buscar?departamento=" + departamento + "&nombre=" + nombre);
   }
 }

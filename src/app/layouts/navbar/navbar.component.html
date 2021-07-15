@@ -1,31 +1,31 @@
 <nav class="navbar navbar-expand-lg navbar-light">
-  <div class="container justify-content-end">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="container">
+      <ul class="w-100 navbar-nav d-flex justify-content-between">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" routerLink="/home"><i class="fas fa-home"></i> Menú Principal</a>
+          <a class="nav-link active btn-nav" aria-current="page" routerLink="/home"><i class="fas fa-home"></i> Menú Principal</a>
         </li>
         <li *ngIf="this.authService.hasRole('ROLE_USER') && authService.isAuthenticated() && router.url !== '/home'" class="nav-item">
-          <a class="nav-link" [routerLink]="'/sig/home/' + this.authService.usuario.empresa " id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link btn-nav" [routerLink]="'/sig/home/' + this.authService.usuario.empresa " id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <span>Inicio</span>
           </a>
         </li>
         <li *ngIf="this.authService.hasRole('ROLE_USER') && authService.isAuthenticated() && router.url !== '/home'" class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link dropdown-toggle btn-nav" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <span>Tablas</span>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <button *ngIf="this.authService.usuario.tConceptos === true" class="dropdown-item btn" [routerLink]="'/sig/home/' + this.authService.usuario.empresa + '/conceptos'">Conceptos</button>
-            <button *ngIf="this.authService.usuario.tDepartamentos === true" class="dropdown-item btn" [routerLink]="'/sig/home/' + this.authService.usuario.empresa + '/departamentos'">Departamentos</button>
-            <button *ngIf="this.authService.usuario.tPuestos === true" class="dropdown-item btn" [routerLink]="'/sig/home/' + this.authService.usuario.empresa + '/puestos'">Puestos</button>
-            <button *ngIf="this.authService.usuario.tEmpleados === true" class="dropdown-item btn" [routerLink]="'/sig/home/' + this.authService.usuario.empresa + '/empleados'">Empleados</button>
+            <button *ngIf="this.authService.usuario.tConceptos === true" class="dropdown-item btn btn-nav" [routerLink]="'/sig/home/' + this.authService.usuario.empresa + '/conceptos'">Conceptos</button>
+            <button *ngIf="this.authService.usuario.tDepartamentos === true" class="dropdown-item btn btn-nav" [routerLink]="'/sig/home/' + this.authService.usuario.empresa + '/departamentos'">Departamentos</button>
+            <button *ngIf="this.authService.usuario.tPuestos === true" class="dropdown-item btn btn-nav" [routerLink]="'/sig/home/' + this.authService.usuario.empresa + '/puestos'">Puestos</button>
+            <button *ngIf="this.authService.usuario.tEmpleados === true" class="dropdown-item btn btn-nav" [routerLink]="'/sig/home/' + this.authService.usuario.empresa + '/empleados'">Empleados</button>
             <div *ngIf="this.authService.usuario.tDivisiones === true || this.authService.usuario.tUsuarios === true || this.authService.usuario.tDatosGenerales === true"  class="dropdown-divider"></div>
-            <a *ngIf="this.authService.usuario.tDivisiones === true" class="dropdown-item btn">Divisiones</a>
-            <a *ngIf="this.authService.usuario.tUsuarios === true" class="dropdown-item btn">Usuarios</a>
-            <a *ngIf="this.authService.usuario.tDatosGenerales === true" class="dropdown-item btn">Datos Generales</a>
+            <button *ngIf="this.authService.usuario.tDivisiones === true"class="dropdown-item btn btn-nav" [routerLink]="'/sig/home/' + this.authService.usuario.empresa + '/divisiones'">Divisiones</button>
+            <button *ngIf="this.authService.usuario.tUsuarios === true" class="dropdown-item btn btn-nav" [routerLink]="'/sig/home/' + this.authService.usuario.empresa + '/divisiones'">Usuarios</button>
+            <button *ngIf="this.authService.usuario.tDatosGenerales === true" class="dropdown-item btn btn-nav" [routerLink]="'/sig/home/' + this.authService.usuario.empresa + '/divisiones'">Datos Generales</button>
           </div>
         </li>
         <li *ngIf="this.authService.hasRole('ROLE_USER') && authService.isAuthenticated() && router.url !== '/home'" class="nav-item dropdown">

@@ -1,14 +1,9 @@
 .navbar{
-    background-color: #3c5d77;
+    background-color: white;
     
 }
 
-ul,a,li,span{
-    color: white !important;
+.btn-nav{
     font-weight: 900 !important;
-
-}
-
-.dropdown-menu > a{
     color: black !important;
 }

@@ -19,6 +19,14 @@ html, body{
   text-align: justify;
 }
   
-input{
-  border-bottom: 1px solid black !important;
+.bg-principal{
+  background-color: #3c5d77;
+}
+
+.color-white{
+  color: white;
+}
+
+.negrita{
+  font-weight: 900;
 }

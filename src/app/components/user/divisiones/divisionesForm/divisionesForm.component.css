@@ -1,0 +1,20 @@
+h2{
+    font-weight: 900;
+}
+
+span{
+    font-weight: 900;
+}
+
+.btn-agregar{
+    background-color: #3c5d77;
+}
+
+.btn{
+    color:white;
+    font-weight: 900;
+}
+
+.card{
+    padding: 15px;
+}

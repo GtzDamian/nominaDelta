@@ -26,6 +26,8 @@ import { ConceptoComponent } from './components/user/concepto/concepto.component
 import { DepartamentosComponent } from './components/user/departamentos/departamentos.component';
 import { PuestosComponent } from './components/user/puestos/puestos.component';
 import { EmpleadosComponent } from './components/user/empleados/empleados.component';
+import { DivisionesComponent } from './components/user/divisiones/divisiones.component';
+import { DivisionesFormComponent } from './components/user/divisiones/divisionesForm/divisionesForm.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,9 @@ import { EmpleadosComponent } from './components/user/empleados/empleados.compon
     ConceptoComponent,
     DepartamentosComponent,
     PuestosComponent,
-    EmpleadosComponent
+    EmpleadosComponent,
+    DivisionesComponent,
+    DivisionesFormComponent
   ],
   imports: [
     BrowserModule,

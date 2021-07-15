@@ -2,31 +2,68 @@
   font-family: 'Montserrat', sans-serif;
 }
 
+/*Mantener footer hasta abajo de página*/
 #page-container {
   position: relative;
   min-height: 100vh;
 }
 
 #content-wrap {
-  padding-bottom: 100px;    /* Footer height */
+  padding-bottom: 100px; 
 }
 
 html, body{
   overflow-x: hidden;
 }
 
+/*Fuentes y alineación*/
 .text-justify{
   text-align: justify;
 }
-  
+
+.negrita{
+  font-weight: 900;
+}
+
+/*Colores*/
+.i-excel{
+  color: #0E753F;
+}
+
+.i-pdf{
+  color:#AD0B00;
+}
+
 .bg-principal{
-  background-color: #3c5d77;
+  background-color: #3c5d77 !important;
 }
 
 .color-white{
   color: white;
 }
 
-.negrita{
-  font-weight: 900;
+.btn-principal{
+  background-color: #3c5d77 !important;
+  color: white !important;
+  font-weight: 900 !important;
+}
+
+.btn-principal:hover{
+  background-color: #13354F !important;
+  
+}
+
+.link{
+  color: blue !important;
+  text-decoration: underline !important;
+}
+
+.div-tabla{
+  min-height: 700px; 
+  max-height: 700px !important; 
+  overflow-y: auto
+}
+
+td{
+  white-space: nowrap;
 }

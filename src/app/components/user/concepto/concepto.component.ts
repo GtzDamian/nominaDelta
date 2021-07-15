@@ -17,6 +17,7 @@ export class ConceptoComponent implements OnInit {
 
   public concepto:Concepto = new Concepto();
   conceptos!: Concepto[];
+  registrosTotales!: number;
 
   constructor(
     private conceptoService: ConceptoService,
@@ -32,7 +33,10 @@ ngOnInit(): void {
     let id = params['id']
     if(id){
       this.conceptoService.getConceptos(id).subscribe(
-        (conceptos) => {this.conceptos = conceptos}
+        (conceptos) => {
+          this.conceptos = conceptos;
+          this.registrosTotales = conceptos.length;
+        }
       )
     }
   }) 
@@ -43,7 +47,10 @@ filtro(){
     let id = params['id']
       if(id){
         this.conceptoService.getConceptosFiltro(id, this.concepto.concepto, this.concepto.nombre).subscribe(
-          (conceptos) => {this.conceptos = conceptos}
+          (conceptos) => {
+            this.conceptos = conceptos;
+            this.registrosTotales = conceptos.length;
+          }
         )
       }
     }) 

@@ -1,54 +1,78 @@
 <div class="container-fluid">
-    <div class="container mt-3">
-        <div class="row justify-content-center">
-            <div class="col-2 text-center">
-                <img [src]="'./assets/logo/logo_simple.jpg'" width="100%" alt="">
-            </div>
-        </div>
-        <div class="row mt-4 justify-content-center">
-            <h2>DELTA CONSULTORES, S.C.</h2>
-        </div>
-        <div class="row mt-4">
-            <p>Fundada desde 1982 se ha dedicado a la consultoría administrativa y el desarrollo de sistemas de cómputo personalizados. Cuenta con una variedad de clientes a nivel nacional con sistemas de inventarios, facturación, cuentas por cobrar, contabilidad, cuentas por pagar y, principalmente, nómina.</p>
-            <p>Entre sus clientes más importantes se encuentran Soldadoras Industriales Infra, SA de CV, Metaloides, SA de CV, Odyssey, SA de CV y algunas agencias de autos de VW.</p>
+    <div class="container">
+        <div class="row mt-3 align-items-center d-flex text-center justify-content-center">
+            <h2>
+                <strong>
+                    DELTA CONSULTORES, S.C.
+                </strong>
+            </h2>
         </div>
         <div class="row mt-4">
-            <div class="col-md-4 mt-3">
-                <div class="card " style="width: 100%;">
-                    <div class="text-center">
-                        <img [src]="'./assets/img/nomina.jpeg'" width="100%" alt="">
+            <p class="text-justify">
+                Fundada desde 1982, se ha dedicado a la consultoría administrativa y el desarrollo de sistemas de cómputo personalizados. Cuenta con una variedad de clientes a nivel nacional con sistemas de inventarios, facturación, cuentas por cobrar, contabilidad, cuentas por pagar y, principalmente, nómina.
+            </p>
+            <p class="text-justify">
+                Entre sus clientes más importantes se encuentran "Soldadoras Industriales Infra, S.A. de C.V.", "Metaloides, S.A. de C.V.", "Odyssey, S.A. de C.V." y algunas agencias de Volkswagen.
+            </p>
+            <p class="text-justify">
+                En esta página podrá conocer algunos de los servicios que DELTA ofrece a sus clientes:
+            </p>
+        </div>
+        <div class="row mt-3 justify-content-center">
+            <div class="col-lg-4 mb-3 col-md-6 col-12"> 
+                <div class="card w-100 h-100">
+                    <img [src]="'./assets/img/home/nomina.jpeg'" width="100%" class="p-3">
+                    <div class="card-body text-center d-flex flex-column align-items-center justify-content-center">
+                        <h5>
+                            <strong>
+                                Sistema de Nómina Delta
+                            </strong>
+                        </h5>
+                        <p class="text-justify">
+                            El Sistema de Nómina Delta es un programa orientado a la pequeña y mediana empresa que necesite calcular sus nóminas y emitir los comprobantes fiscales requeridos.
+                        </p>
+                        <a href="#" class="btn btn-principal">
+                          Visitar
+                        </a>
                     </div>
-                    <div class="card-body text-center">
-                      <h4 class="card-title">Sistema de Nómina Delta</h4>
-                      <p class="card-text">El Sistema de Nómina Delta es un programa orientado a la pequeña y mediana empresa que necesite calcular sus nóminas y emitir los comprobantes fiscales requeridos</p>
-                      <a href="#" class="btn btn-primary">Descargar Demo</a>
-                    </div>
-                  </div>
+                </div>
             </div>
-            <div class="col-md-4 mt-3">
-                <div class="card " style="width: 100%;">
-                    <div class="text-center">
-                        <img [src]="'./assets/logo/logo_simple.jpg'" width="50%" alt="">
+            <div class="col-lg-4 mb-3 col-md-6 col-12">
+                <div class="card w-100 h-100">
+                    <img [src]="'./assets/img/home/logo_simple.jpg'" width="100%" class="p-3">
+                    <div class="card-body text-center d-flex flex-column align-items-center justify-content-center">
+                        <h5>
+                            <strong>
+                                Manual de Usuario
+                            </strong>
+                        </h5>
+                        <p class="text-justify">
+                            Revise el Manual de Usuario para el Sistema de Nómina Delta.
+                        </p>
+                        <a href="#" class="btn btn-principal">
+                          Visitar
+                        </a>
                     </div>
-                    <div class="card-body text-center">
-                      <h4 class="card-title">Manual de Usuario</h4>
-                      <p class="card-text">Manual de usuario para el <b>Sistema de Nómina Delta</b></p>
-                      <a href="#" class="btn btn-primary">Ver Manual</a>
-                    </div>
-                  </div>
+                </div>
             </div>
-            <div class="col-md-4 mt-3">
-                <div class="card " style="width: 100%;">
-                    <div class="text-center">
-                        <img [src]="'./assets/img/sig.png'" width="100%" alt="">
+            <div class="col-lg-4 mb-3 col-md-6 col-12">
+                <div class="card w-100 h-100">
+                    <img [src]="'./assets/img/home/sig.jpeg'" width="100%" class="p-3">
+                    <div class="card-body text-center d-flex flex-column align-items-center justify-content-center">
+                        <h5>
+                            <strong>
+                                Sistema de Información Gerencial
+                            </strong>
+                        </h5>
+                        <p class="text-justify">
+                            Revise información respecto a la nómina de su empresa con este complemento al Sistema de Nómina Delta.
+                        </p>
+                        <a [routerLink]="'/sig/login'" class="btn btn-principal">
+                          Visitar
+                        </a>
                     </div>
-                    <div class="card-body text-center">
-                      <h4 class="card-title">Sistema de Información Gerencial</h4>
-                      <p class="card-text">Complemento para el Sistema de Nómina Delta desde el cual se pueden revisar la situación actual de su empresa</p>
-                      <a routerLink="/sig/login" class="btn btn-primary">Ir a S.I.G.</a>
-                    </div>
-                  </div>
+                </div>
             </div>
-        </div>       
+        </div>
     </div>
 </div>

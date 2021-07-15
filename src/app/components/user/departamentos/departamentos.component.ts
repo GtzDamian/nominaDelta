@@ -14,6 +14,7 @@ export class DepartamentosComponent implements OnInit {
   
   public departamento:Departamento = new Departamento();
   departamentos!: Departamento[];
+  registrosTotales!: number; 
 
   constructor(
     private departamentoService: DepartamentoService,
@@ -29,7 +30,10 @@ export class DepartamentosComponent implements OnInit {
       let id = params['id']
       if(id){
         this.departamentoService.getDepartamentos(id).subscribe(
-          (departamentos) => {this.departamentos = departamentos}
+          (departamentos) => {
+            this.departamentos = departamentos;
+            this.registrosTotales = departamentos.length;
+          }
         )
       }
     })
@@ -40,7 +44,10 @@ export class DepartamentosComponent implements OnInit {
       let id = params['id']
         if(id){
           this.departamentoService.getDepartamentosFiltro(id, this.departamento.departamento, this.departamento.nombre).subscribe(
-            (departamentos) => {this.departamentos = departamentos}
+            (departamentos) => {
+              this.departamentos = departamentos;
+              this.registrosTotales = departamentos.length;
+            }
           )
         }
       }) 

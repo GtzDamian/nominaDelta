@@ -14,6 +14,8 @@ export class EmpleadosComponent implements OnInit {
 
   empleado: Empleado = new Empleado();
   empleados!: Empleado[]; 
+  registrosTotales!: number;
+
 
   constructor(
     private empleadoService: EmpleadoService,
@@ -30,7 +32,9 @@ export class EmpleadosComponent implements OnInit {
       if(id){
         this.empleadoService.getEmpleados(id).subscribe(
           (empleados) => {
-            this.empleados = empleados}
+            this.empleados = empleados;
+            this.registrosTotales = empleados.length;
+          }
         )
       }
     })
@@ -41,7 +45,10 @@ export class EmpleadosComponent implements OnInit {
       let id = params['id']
         if(id){
           this.empleadoService.getEmpleadosFiltro(id, this.empleado.empleado, this.empleado.nombre, this.empleado.departamento, this.empleado.puesto).subscribe(
-            (empleados) => {this.empleados = empleados}
+            (empleados) => {
+              this.empleados = empleados
+              this.registrosTotales = empleados.length;
+            }
           )
         }
       }) 

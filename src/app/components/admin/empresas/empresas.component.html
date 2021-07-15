@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<!--<div class="container-fluid">
     <div class="container mt-3">
         <div class="row justify-content-center">
             <h2>{{titulo}}</h2>      
@@ -24,13 +24,52 @@
                         <td>{{empresa.rfc}}</td>
                         <td>{{empresa.razonSocial}}</td>
                         <td>{{empresa.createAt}}</td>
-                        <!--<td><button class="btn" title="Administrar usuarios" [routerLink]="['/sig/admin/usuarios/empresa', empresa.rfc]"><i class="fas fa-users-cog"></i></button></td>-->
                         <td><button class="btn" title="Administrar usuarios" [routerLink]="['/sig/admin/usuarios/empresa', empresa.rfc]"><i class="fas fa-users-cog"></i></button></td>
                         <td><button class="btn" title="Editar Empresa" [routerLink]="['/sig/admin/empresas', empresa.rfc]"><i class="fas fa-edit"></i></button></td>
                         <td><button class="btn" title="Eliminar Empresa" (click)="delete(empresa)"><i class="fas fa-trash-alt"></i></button></td>
                     </tr>
                 </tbody>
             </table>
+        </div>
+    </div>
+</div>-->
+<div class="container-fluid">
+    <div class="container">
+        <div class="row mt-3">
+            <h2>
+                <strong>
+                    Empresas Registradas
+                </strong>
+            </h2>
+        </div>
+        <div class="row mt-3">
+            <button class="btn btn-principal" title="Agregar Nueva Empresa" [routerLink]="['/sig/admin/empresas/']">
+                <strong>Nueva <i class="fas fa-plus"></i></strong>
+            </button>
+        </div>
+        <div class="row mt-3 div-tabla" >
+            <div class="w-100">
+                <table class="table table-bordered table-striped">
+                    <thead class="text-center">
+                        <th>RFC</th>
+                        <th>RAZÓN SOCIAL</th>
+                        <th>FECHA</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </thead>
+                    <tbody class="text-center">
+                        <tr *ngFor="let empresa of empresas">
+                            <td>{{empresa.rfc}}</td>
+                            <td>{{empresa.razonSocial}}</td>
+                            <td>{{empresa.createAt}}</td>
+                            <td><button class="btn" title="Administrar usuarios" [routerLink]="['/sig/admin/usuarios/empresa', empresa.rfc]"><i class="fas fa-users-cog"></i></button></td>
+                            <td><button class="btn" title="Editar Empresa" [routerLink]="['/sig/admin/empresas', empresa.rfc]"><i class="fas fa-edit"></i></button></td>
+                            <td><button class="btn" title="Eliminar Empresa" (click)="delete(empresa)"><i class="fas fa-trash-alt"></i></button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>

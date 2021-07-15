@@ -1,15 +1,15 @@
-h1, span, button{
-    font-weight: 900;
-}
-.card{
-    padding: 15px
+.inp-login{
+    border:0;
+    border-bottom: 2px solid #D4D4D4;
+    transition: 1s;
+    width: 100%;
 }
 
-.btn{
-    background-color: #3e7198;
-    color: white;
+.inp-login:focus{
+    outline:none ;
 }
-a, a:hover{
-    color: black;
-    font-size: 14px;
+.inp-login:hover{
+    border-bottom: 2px solid #3c5d77 ;
+    transition: 1s;
 }
+

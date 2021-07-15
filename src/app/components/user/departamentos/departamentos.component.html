@@ -1,48 +1,56 @@
 <div class="container-fluid">
     <div class="container">
         <div class="row mt-3">
-            <h3><b>Tabla de Departamentos</b></h3>
+            <h2>
+                <strong>
+                    Tabla de Departamentos
+                </strong>
+            </h2>
+        </div>
+        <div class="row mt-3 justify-content-center">
+            <div class="col-lg-4 text-center">
+                <a href="" class="link btn">
+                    <i class="fas fa-file-excel i-excel" ></i> Exportar a Excel
+                </a>
+            </div>
+            <div class="col-lg-4 text-center">
+                <a href="" class="link btn">
+                    <i class="fas fa-file-pdf i-pdf" ></i> Exportar a PDF
+                </a>
+            </div>
         </div>
         <div class="row mt-3">
-            <div class="col-lg-4 col-md-4 col-6 text-center mb-3">
-                <i class="fas fa-file-pdf" style="color: #AD0B00; font-size: 20px;"></i> <span><b> Exportar a PDF</b></span> &nbsp;
+            <h5>
+                <strong>
+                    Filtrar por:
+                </strong>
+            </h5>
+        </div>
+        <div class="row mt-2 justify-content-center">
+            <div class="col-lg-5 col-md-6 col-10 my-2">
+                <input type="text" class="form-control" placeholder="# de Departamento" oninput="this.value = this.value.toUpperCase()" id="departamento" type="text" name="departamento" [(ngModel)]="departamento.departamento" (input)="filtro()">
             </div>
-            <div class="col-lg-4 col-md-4 col-6 text-center mb-3">
-                <i class="fas fa-file-excel" style="color: #0E753F; font-size: 20px"></i> <span><b> Exportar a Excel</b></span>
-            </div>
-            <div class="col-lg-4 col-md-4 col-12 text-center mb-3">
-                <span><b>Departamentos:</b> 12</span>
+            <div class="col-lg-5 col-md-6 col-10 my-2">
+                <input type="text" class="form-control" placeholder="Nombre de Departamento" oninput="this.value = this.value.toUpperCase()" id="nombre" type="text" name="nombre" [(ngModel)]="departamento.nombre" (input)="filtro()">
             </div>
         </div>
-        <div class="row mt-3 div-tabla border" style="border-radius: 10px;">
+        <div class="row mt-4 justify-content-center">
+            <span><strong>Total de Registros:</strong> {{registrosTotales}}</span>
+        </div>
+        <div class="row mt-3 div-tabla" >
             <div class="w-100">
-                <table class="table table-striped">
-                    <thead>
-                        <th class="text-center">RFC</th>
-                        <th class="text-center">Departamento</th>
-                        <th class="text-center">Nombre</th>
-                        <th class="text-center">Fecha</th>
+                <table class="table table-bordered table-striped">
+                    <thead class="text-center">
+                        <th>DEPARTAMENTO</th>
+                        <th>NOMBRE</th>
                     </thead>
-                    <tbody>
+                    <tbody class="text-center">
                         <tr *ngFor="let departamento of departamentos">
-                            <td class="text-center">{{departamento.rfc.rfc}}</td>
-                            <td class="text-center">{{departamento.departamento}}</td>
-                            <td class="text-center">{{departamento.nombre}}</td>
-                            <td class="text-center">{{departamento.fecha}}</td>
+                            <td>{{departamento.departamento}}</td>
+                            <td>{{departamento.nombre}}</td>
                         </tr>
                     </tbody>
                 </table>
-            </div>
-        </div>
-        <div class="row mt-3">
-            <h4><b>Filtrar por:</b></h4>
-        </div>
-        <div class="row mt-3 mb-3 justify-content-around">
-            <div class="col-lg-4 col-6">
-                <input oninput="this.value = this.value.toUpperCase()" id="departamento" type="text" name="departamento" class="form-control box-shadow" placeholder="# de Departamento" [(ngModel)]="departamento.departamento" (input)="filtro()">
-            </div>
-            <div class="col-lg-4 col-6">
-                <input oninput="this.value = this.value.toUpperCase()" id="nombre" type="text" name="nombre" class="form-control box-shadow" placeholder="Nombre de Departamento" [(ngModel)]="departamento.nombre" (input)="filtro()">
             </div>
         </div>
     </div>

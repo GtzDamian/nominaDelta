@@ -14,6 +14,7 @@ export class PuestosComponent implements OnInit {
 
   public puesto:Puesto = new Puesto();
   puestos!: Puesto[];
+  registrosTotales!: number;
 
   constructor( private puestoService: PuestoService,
     private authService: AuthService,
@@ -28,7 +29,11 @@ export class PuestosComponent implements OnInit {
       let id = params['id']
       if(id){
         this.puestoService.getPuestos(id).subscribe(
-          (puestos) => {this.puestos = puestos}
+          (puestos) => {
+            this.puestos = puestos;
+            this.registrosTotales = puestos.length;
+          
+          }
         )
       }
     }) 
@@ -39,7 +44,10 @@ export class PuestosComponent implements OnInit {
       let id = params['id']
         if(id){
           this.puestoService.getPuestosFiltro(id, this.puesto.puesto, this.puesto.nombre).subscribe(
-            (puestos) => {this.puestos = puestos}
+            (puestos) => { 
+              this.puestos = puestos;
+              this.registrosTotales = puestos.length;
+            }
           )
         }
       }) 

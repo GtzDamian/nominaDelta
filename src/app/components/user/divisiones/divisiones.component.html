@@ -29,8 +29,8 @@
                             <td>{{division.departamento}}</td>
                             <td>{{division.nombre}}</td>
                             <td>{{division.nomGraf}}</td>
-                            <td><button class="btn" title="Editar División"><i class="fas fa-edit" style="color: blue;"></i></button></td>
-                            <td><button class="btn" title="Eliminar División"><i class="fas fa-trash" style="color: red"></i></button></td>
+                            <td><button class="btn" title="Editar División" [routerLink]="'division/' + division.id"><i class="fas fa-edit" style="color: blue;"></i></button></td>
+                            <td><button class="btn" title="Eliminar División" (click)="delete(division)"><i class="fas fa-trash" style="color: red"></i></button></td>
                         </tr>
                     </tbody>
                 </table>

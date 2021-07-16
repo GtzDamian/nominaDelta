@@ -4,6 +4,7 @@ import { DivisionService } from 'src/app/models/services/division.service';
 import { AuthService } from 'src/app/models/services/auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Title } from '@angular/platform-browser';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-divisiones',
@@ -31,6 +32,31 @@ export class DivisionesComponent implements OnInit {
       if(id){
         this.divisionService.getDivisiones(id).subscribe(
           (divisiones) => {this.divisiones = divisiones}
+        )
+      }
+    })
+  }
+
+  public delete(division: Division):void{
+    Swal.fire({
+      title: 'Borrar Empresa',
+      text: `¿Desea eliminar la Division ${division.division} - ${division.nombre}?`,
+      icon: 'warning',
+      reverseButtons: true,
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      cancelButtonText: 'Cancelar',
+      confirmButtonText: 'Aceptar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.divisionService.delete(division.id).subscribe(
+          response => {
+            Swal.fire('Eliminada', `La división ${division.division} - ${division.nombre} ha sido eliminada`,'success').
+            then(function(){ 
+              location.reload();
+            });
+          }
         )
       }
     })

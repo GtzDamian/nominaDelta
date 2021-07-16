@@ -1,63 +1,62 @@
 <div class="container-fluid">
-    <div class="container mt-3">
-        <div class="row">
-            <h2>Agregar Nueva División</h2>
+    <div class="container">
+        <div class="row" *ngIf="rfcExists == false else altTitle">
+            <h2><strong>Agregar Nueva División</strong></h2>
         </div>
         <ng-template #altTitle>
             <div class="row">
-                <h2>Editar Division</h2>
+                <h2><strong>Editar División</strong></h2>
             </div>          
         </ng-template>
-        <div class="row mt-4 justify-content-center">
-            <div class="card" style="width: 35rem;">
-                <div class="row mt-4 justify-content-center">
-                    <div class="col-3 d-flex justify-content-start align-items-center">
-                        <span>Division:</span>
+       <div class="row mt-5 justify-content-center">
+            <div class="col-lg-6 border py-3">
+                <div class="row my-3">
+                    <div class="col-lg-5 col-md-6">
+                        <span><strong>División:</strong></span>
                     </div>
-                    <div class="col-8 p-0">
-                        <input  type="text"  [(ngModel)]="division.division" class="form-control" name="division" id="division" maxlength="4" autofocus required>
-                    </div>
-                </div>
-                <div class="row mt-3 justify-content-center">
-                    <div class="col-3 d-flex justify-content-start align-items-center">
-                        <span>Departamento:</span>
-                    </div>
-                    <div class="col-8 p-0">
-                        <input type="text" oninput="this.value = this.value.toUpperCase()" [(ngModel)]="division.departamento" class="form-control" name="departamento" id="departamento" autofocus required>
+                    <div class="col-lg-7 col-md-6">
+                        <input type="text" oninput="this.value = this.value.toUpperCase()"   [(ngModel)]="division.division" class="form-control" name="division" id="division">
                     </div>
                 </div>
-                <div class="row mt-3 justify-content-center">
-                    <div class="col-3 d-flex justify-content-start align-items-center">
-                        <span>Nombre:</span>
+                <div class="row my-3">
+                    <div class="col-lg-5 col-md-6">
+                        <span><strong>Departamento:</strong></span>
                     </div>
-                    <div class="col-8 p-0">
-                        <input type="text" oninput="this.value = this.value.toUpperCase()" [(ngModel)]="division.nombre" class="form-control" name="nombre" id="nombre" autofocus required>
+                    <div class="col-lg-7 col">
+                        <input type="text" class="form-control" oninput="this.value = this.value.toUpperCase()" [(ngModel)]="division.departamento" class="form-control" name="departamento" id="departamento">
                     </div>
                 </div>
-                <div class="row mt-3 justify-content-center">
-                    <div class="col-3 d-flex justify-content-start align-items-center">
-                        <span>Nombre Gráfico:</span>
+                <div class="row my-3">
+                    <div class="col-lg-5 col-md-6">
+                        <span><strong>Nombre:</strong></span>
                     </div>
-                    <div class="col-8 p-0">
-                        <input type="text" oninput="this.value = this.value.toUpperCase()" [(ngModel)]="division.nomGraf" class="form-control" name="nomGraf" id="nomGraf" autofocus required>
+                    <div class="col-lg-7 col-md-6">
+                        <input type="text" oninput="this.value = this.value.toUpperCase()"   [(ngModel)]="division.nombre" class="form-control" name="nombre" id="nombre">
+                    </div>
+                </div>
+                <div class="row my-3">
+                    <div class="col-lg-5 col-md-6">
+                        <span><strong>Nombre Gráfica:</strong></span>
+                    </div>
+                    <div class="col-lg-7 col">
+                        <input type="text" class="form-control" oninput="this.value = this.value.toUpperCase()" [(ngModel)]="division.nomGraf" class="form-control" name="nomGraf" id="nomGraf">
                     </div>
                 </div>
                 <div class="row mt-4 justify-content-center">
                     <div class="col-5 text-center">
                         <button class="btn btn-secondary" [routerLink]="'/sig/home/' + this.authService.usuario.empresa + '/divisiones'">Cancelar</button>
                     </div>
-                    <div class="col-5 text-center" >
-                        <button class="btn btn-agregar" >Agregar</button>
+                    <div class="col-5 text-center" *ngIf="rfcExists == false else altBtn">
+                        <button class="btn btn-principal" (click)="create()" >Agregar</button>
                     </div>
                     <ng-template #altBtn>
                         <div class="col-5 text-center" >
-                            <button class="btn btn-agregar"   >Editar</button>
+                            <button class="btn btn-principal" (click)="update()" >Editar</button>
                         </div>
                     </ng-template>
                 </div>
             </div>
         </div>
-
     </div>
 </div>
 

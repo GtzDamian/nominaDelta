@@ -1,0 +1,65 @@
+<!--<div class="container-fluid">
+    <div class="container mt-3">
+        <div class="row mt-2">
+            <h3>Tabla de usuarios</h3>
+        </div>
+        <div class="row mt-4">
+            <button class="btn btn-nuevo" [routerLink]="['usuario']"><i class="fas fa-plus"></i> Nuevo Usuario</button>
+        </div>
+        <div class="row mt-3" style="overflow-x: auto;">
+            <table class="table table-striped">
+                <thead class="">
+                    <th>Usuario</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Fecha</th>
+                    <th></th>
+                    <th></th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let usuario of usuarios">
+                        <td>{{usuario.username}}</td>
+                        <td>{{usuario.nombre}}</td>
+                        <td>{{usuario.apellido}}</td>
+                        <td>{{usuario.createAt}}</td>
+                        <td><button class="btn" title="Editar Usuario" [routerLink]="['usuario', usuario.id]"><i class="fas fa-edit"></i></button></td>
+                        <td><button class="btn" title="Eliminar Usuario" (click)="borrarUsuario(usuario)"><i class="fas fa-trash-alt"></i></button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>-->
+
+<div class="container-fluid">
+    <div class="container">
+        <div class="row mt-3">
+            <h2><strong>Tabla de Usuarios</strong></h2>
+        </div>
+        <div class="row mt-4">
+            <button class="btn btn-nuevo" [routerLink]="['usuario']"><i class="fas fa-plus"></i> Nuevo Usuario</button>
+        </div>
+        <div class="row mt-3" style="overflow-x: auto;">
+            <table class="table table-striped">
+                <thead class="">
+                    <th>Usuario</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Fecha</th>
+                    <th></th>
+                    <th></th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let usuario of usuarios">
+                        <td>{{usuario.username}}</td>
+                        <td>{{usuario.nombre}}</td>
+                        <td>{{usuario.apellido}}</td>
+                        <td>{{usuario.createAt}}</td>
+                        <td><button class="btn" title="Editar Usuario" [routerLink]="['usuario', usuario.id]"><i class="fas fa-edit"></i></button></td>
+                        <td><button class="btn" title="Eliminar Usuario" (click)="borrarUsuario(usuario)"><i class="fas fa-trash-alt"></i></button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -7,10 +7,10 @@ import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-userForm',
-  templateUrl: './userForm.component.html',
-  styleUrls: ['./userForm.component.css']
+  templateUrl: './userAdminForm.component.html',
+  styleUrls: ['./userAdminForm.component.css']
 })
-export class UserFormComponent implements OnInit {
+export class UserAdminFormComponent implements OnInit {
 
   public usuario: Usuario = new Usuario();
 
@@ -30,7 +30,7 @@ export class UserFormComponent implements OnInit {
       if(id){
         this.usuarioService.getUsuario(id).subscribe( (usuario) => this.usuario = usuario)
       }
-    })
+    });
   }
 
   public create():void{

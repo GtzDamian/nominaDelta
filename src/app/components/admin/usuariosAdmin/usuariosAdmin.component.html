@@ -1,0 +1,80 @@
+<!--<div class="container-fluid">
+    <div class="container mt-3">
+        <div class="row mb-3">
+            <a routerLink="/sig/admin"><i class="fas fa-chevron-left"></i> Regresar</a>
+        </div>
+        <div class="row justify-content-center">
+            <h2>{{empresa.razonSocial}}</h2>
+        </div>
+        <div class="row mt-2">
+            <h3>Lista de Usuarios</h3>
+        </div>
+        <div class="row mt-4">
+            <button class="btn btn-nuevo" [routerLink]="['usuario']"><i class="fas fa-plus"></i> Nuevo Usuario</button>
+        </div>
+        <div class="row mt-3" style="overflow-x: auto;">
+            <table class="table table-striped">
+                <thead class="">
+                    <th>Usuario</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Fecha</th>
+                    <th></th>
+                    <th></th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let usuario of usuarios">
+                        <td>{{usuario.username}}</td>
+                        <td>{{usuario.nombre}}</td>
+                        <td>{{usuario.apellido}}</td>
+                        <td>{{usuario.createAt}}</td>
+                        <td><button class="btn" title="Editar Usuario" [routerLink]="['usuario', usuario.id]"><i class="fas fa-edit"></i></button></td>
+                        <td><button class="btn" title="Eliminar Usuario" (click)="borrarUsuario(usuario)"><i class="fas fa-trash-alt"></i></button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>-->
+<div class="container-fluid">
+    <div class="container">
+        <div class="row mt-3">
+            <a class="link btn" [routerLink]="'/sig/admin/'">
+                <i class="fas fa-chevron-left"></i> Regresar
+            </a>
+        </div>
+        <div class="row mt-3 justify-content-center">
+            <h2><strong>{{empresa.razonSocial}}</strong></h2>
+        </div>
+        <div class="row mt-3">
+            <h3><strong>Usuarios registrados</strong></h3>
+        </div>
+        <div class="row mt-3">
+            <button class="btn btn-principal" title="Agregar Nueva División" [routerLink]="['usuario']">
+                <strong>Nuevo <i class="fas fa-plus"></i></strong>
+            </button>
+        </div>
+        <div class="row mt-3 div-tabla" style="overflow-x: auto;">
+           <div class="w-100">
+            <table class="table table-stripped">
+                <thead>
+                    <th>USUARIO</th>
+                    <th>NOMBRE</th>
+                    <th>APELLIDO</th>
+                    <th></th>
+                    <th></th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let usuario of usuarios">
+                        <td>{{usuario.username}}</td>
+                        <td>{{usuario.nombre}}</td>
+                        <td>{{usuario.apellido}}</td>
+                        <td><button class="btn" title="Editar División" [routerLink]="['usuario', usuario.id]"><i class="fas fa-edit" style="color: blue;"></i></button></td>
+                        <td><button class="btn" title="Eliminar División" (click)="borrarUsuario(usuario)"><i class="fas fa-trash" style="color: red"></i></button></td>
+                    </tr>
+                </tbody>
+            </table>
+           </div>
+        </div>
+    </div>
+</div>

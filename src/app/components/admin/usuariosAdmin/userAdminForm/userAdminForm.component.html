@@ -1,0 +1,113 @@
+<div class="container-fluid">
+    <div class="container">
+        <div class="row mt-3" *ngIf="!usuario.id else altTitle">
+            <h2><strong>Agregar Usuario</strong></h2>
+        </div>
+        <ng-template #altTitle>
+            <div class="row mt-3">
+                <h2><strong>Editar Usuario</strong></h2>
+            </div>
+        </ng-template>
+        <div class="row mt-5 mb-3 justify-content-center">
+            <div class="col-lg-6 border py-3">
+                <div class="row my-3">
+                    <div class="col-lg-5 col-md-6">
+                        <span><strong>USERNAME:</strong></span>
+                    </div>
+                    <div class="col-lg-7 col-md-6">
+                        <input type="text" oninput="this.value = this.value.toUpperCase()"   [(ngModel)]="usuario.username" class="form-control" name="username" id="username">
+                    </div>
+                </div>
+                <div class="row my-3">
+                    <div class="col-lg-5 col-md-6">
+                        <span><strong>NOMBRE:</strong></span>
+                    </div>
+                    <div class="col-lg-7 col-md-6">
+                        <input type="text" oninput="this.value = this.value.toUpperCase()"   [(ngModel)]="usuario.nombre" class="form-control" name="nombre" id="nombre">
+                    </div>
+                </div>
+                <div class="row my-3">
+                    <div class="col-lg-5 col-md-6">
+                        <span><strong>APELLIDO:</strong></span>
+                    </div>
+                    <div class="col-lg-7 col-md-6">
+                        <input type="text" oninput="this.value = this.value.toUpperCase()"   [(ngModel)]="usuario.apellido" class="form-control" name="apellido" id="apellido">
+                    </div>
+                </div>
+                <div class="row my-3">
+                    <div class="col-lg-5 col-md-6">
+                        <span><strong>PASSWORD:</strong></span>
+                    </div>
+                    <div class="col-lg-7 col-md-6">
+                        <input type="password"  [(ngModel)]="usuario.password" class="form-control" name="password" id="password">
+                    </div>
+                </div>
+                <div class="row mt-5 justify-content-center">
+                    <h4><strong>Permisos</strong></h4>
+                </div>
+                <div class="row mt-2 justify-content-center">
+                    <div class="col-lg-6 col-md-6 col-10 d-flex flex-column">
+                        <div class="row justify-content-center">
+                            <h5 class="m-0"><strong>Tablas</strong></h5>
+                        </div>
+                        <div class="row d-flex align-items-center mt-1 px-3">
+                            <input type="checkbox" [(ngModel)]="usuario.tConceptos" name="tConceptos" id="tConceptos">&nbsp; Conceptos
+                        </div>
+                        <div class="row d-flex align-items-center mt-1 px-3">
+                            <input type="checkbox" [(ngModel)]="usuario.tDepartamentos" name="tDepartamentos" id="tDepartamentos">&nbsp; Departamentos
+                        </div>
+                        <div class="row d-flex align-items-center mt-1 px-3">
+                            <input type="checkbox" [(ngModel)]="usuario.tPuestos" name="tPuestos" id="tPuestos">&nbsp; Puestos
+                        </div>
+                        <div class="row d-flex align-items-center mt-1 px-3">
+                            <input type="checkbox" [(ngModel)]="usuario.tEmpleados" name="tEmpleados" id="tEmpleados">&nbsp; Empleados
+                        </div>
+                        <div class="row d-flex align-items-center mt-1 px-3">
+                            <input type="checkbox" [(ngModel)]="usuario.tDivisiones" name="tDivisiones" id="tDivisiones">&nbsp; Divisiones
+                        </div>
+                        <div class="row d-flex align-items-center mt-1 px-3">
+                            <input type="checkbox" [(ngModel)]="usuario.tUsuarios" name="tUsuarios" id="tUsuarios">&nbsp; Usuarios
+                        </div>
+                        <div class="row d-flex align-items-center mt-1 px-3">
+                            <input type="checkbox" [(ngModel)]="usuario.tDatosGenerales" name="t" id="tDatosGenerales">&nbsp; Datos Generales
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-10 d-flex flex-column">
+                        <div class="row justify-content-center">
+                            <h5 class="m-0"><strong>Consultas</strong></h5>
+                        </div>
+                        <div class="row d-flex align-items-center mt-1 px-3">
+                            <input type="checkbox" [(ngModel)]="usuario.cPorDivision" name="cPorDivision" id="cPorDivision">&nbsp; Por División
+                        </div>
+                        <div class="row d-flex align-items-center mt-1 px-3">
+                            <input type="checkbox" [(ngModel)]="usuario.cPorConcepto"  name="cPorConcepto" id="cPorConcepto">&nbsp; Por Concepto
+                        </div>
+                        <div class="row d-flex align-items-center mt-1 px-3">
+                            <input type="checkbox" [(ngModel)]="usuario.cPorEmpleado" name="cPorEmpleado" id="cPorEmpleado">&nbsp; Por Empleado
+                        </div>
+                        <div class="row d-flex align-items-center mt-1 px-3">
+                            <input type="checkbox" [(ngModel)]="usuario.cDeEmpleado" name="cDeEmpleado" id="cDeEmpleado">&nbsp; De Empleados
+                        </div>
+                        <div class="row justify-content-center mt-3">
+                            <h5 class="m-0"><strong>Exportar</strong></h5>
+                        </div>
+                        <div class="row d-flex align-items-center mt-1 px-3">
+                            <input type="checkbox" [(ngModel)]="usuario.eExcel" name="eExcel" id="eExcel">&nbsp; Excel
+                        </div>
+                        <div class="row d-flex align-items-center mt-1 px-3">
+                            <input type="checkbox" [(ngModel)]="usuario.ePdf" name="ePdf" id="ePdf">&nbsp; PDF
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-5 justify-content-around">
+                    <button class="btn btn-secondary" (click)="back()">Cancelar</button>
+                    <button class="btn btn-principal" (click)="create()" *ngIf="!usuario.id else altBtn">Agregar</button>
+                    <ng-template #altBtn>
+                        <button class="btn btn-principal" (click)="update()">Actualizar</button>
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>

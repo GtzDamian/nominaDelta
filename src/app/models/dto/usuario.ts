@@ -14,6 +14,12 @@ export class Usuario {
     tDivisiones!:boolean;
     tUsuarios!:boolean;
     tDatosGenerales!:boolean;
+    cPorDivision!: boolean;
+    cPorConcepto!: boolean;
+    cPorEmpleado!: boolean;
+    cDeEmpleado!: boolean;
+    eExcel!: boolean;
+    ePdf!: boolean;
     createAt!: string;
     enabled!: boolean;
     empresa!: Empresa[];

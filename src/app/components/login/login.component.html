@@ -6,43 +6,27 @@
             </a>
         </div>
         <div class="row mt-3">
-            <h2>
-                <strong>
-                    Iniciar Sesión
-                </strong>
-            </h2>
+            <h2><strong>Iniciar Sesión</strong></h2>
         </div>
         <div class="row mt-2">
-            <h4>
-                <strong>
-                    Sistema de Información Gerencial - Nómina
-                </strong>
-            </h4>
+            <h4><strong>Sistema de Información Gerencial - Nómina</strong></h4>
         </div>
-        <div class="row mt-4 justify-content-center">
-            <div class="col-lg-6 col-md-7 col-12 py-3 ">
-                <div class="row justify-content-center">
-                    <h5>
-                        <strong>
-                            Usuario
-                        </strong>
-                    </h5>
-                </div>
-                <div class="row justify-content-center">
-                    <div class="col-lg-10">
-                        <input type="text" class="inp-login" type="text" oninput="this.value = this.value.toUpperCase()" [(ngModel)]="usuario.username" name="username" id="username" placeholder="Nombre de usuario">
+        <div class="row mt-5 justify-content-center">
+            <div class="col-lg-6 border py-3">
+                <div class="row my-3">
+                    <div class="col-lg-5 col-md-6">
+                        <span><strong>Usuario:</strong></span>
+                    </div>
+                    <div class="col-lg-7 col-md-6">
+                        <input type="text" class="form-control" placeholder="Username" oninput="this.value = this.value.toUpperCase()" [(ngModel)]="usuario.username" name="username" id="username" placeholder="Nombre de usuario">
                     </div>
                 </div>
-                <div class="row mt-4 justify-content-center">
-                    <h5>
-                        <strong>
-                            Contraseña
-                        </strong>
-                    </h5>
-                </div>
-                <div class="row justify-content-center">
-                    <div class="col-lg-10">
-                        <input type="password" class="inp-login" [(ngModel)]="usuario.password" name="password" id="password" placeholder="Contraseña del usuario">
+                <div class="row my-3">
+                    <div class="col-lg-5 col-md-6">
+                        <span><strong>Contraseña:</strong></span>
+                    </div>
+                    <div class="col-lg-7 col">
+                        <input type="password" class="form-control" placeholder="Password" [(ngModel)]="usuario.password" name="password" id="password" placeholder="Contraseña del usuario">
                     </div>
                 </div>
                 <div class="row mt-4 justify-content-center">
@@ -52,6 +36,5 @@
                 </div>
             </div>
         </div>
-
     </div>
 </div>

@@ -12,6 +12,9 @@ import { AuthService } from 'src/app/models/services/auth.service';
 })
 export class UsuariosComponent implements OnInit {
 
+  usuario: Usuario = new Usuario();
+  usuarios!: Usuario[];
+
   constructor(
     private usuarioService: UsuarioService,
     public router: Router, 
@@ -21,14 +24,41 @@ export class UsuariosComponent implements OnInit {
    
 
   ngOnInit(): void {
-    var rfcUsuario: any = this.authService.usuario.empresa;
-    var authorities: any = this.authService.usuario.roles;
-   if(rfcUsuario == this.rfc || (rfcUsuario == "DCO821008122"  && authorities == "ROLE_ADMIN" )){
-     this.cargarUsuarios(this.rfc);
-     this.cargarEmpresa(this.rfc);
-   }else{
-     Swal.fire('Error', 'error', 'error' );
-   }
+   this.cargarUsuarios();
   }
 
+  cargarUsuarios(){
+    let rfc = this.authService.usuario.empresa;
+    this.usuarioService.getUsuarios(rfc).subscribe(
+      (usuarios) => {
+        this.usuarios = usuarios;
+      }
+    )
+  }
+
+  borrarUsuario(usuario: Usuario): void{
+    Swal.fire({
+      title: 'Borrar Usuario',
+      text: `¿Desea eliminar a ${usuario.username}?`,
+      icon: 'warning',
+      reverseButtons: true,
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      cancelButtonText: 'Cancelar',
+      confirmButtonText: 'Aceptar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.usuarioService.delete(usuario.id).subscribe(
+          response => {
+            Swal.fire('Eliminado', `${usuario.username} ha sido eliminado`,'success').
+            then(function(){ 
+              location.reload();
+            });
+          }
+        )
+      }
+    })
+  }
+  
 }

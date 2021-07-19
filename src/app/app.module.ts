@@ -10,12 +10,12 @@ import { HeaderComponent } from './layouts/header/header.component';
 import { FooterComponent } from './layouts/footer/footer.component';
 import { NavbarComponent } from './layouts/navbar/navbar.component';
 import { EmpresasComponent } from './components/admin/empresas/empresas.component';
-import { UsuariosComponent } from './components/admin/usuarios/usuarios.component';
+import { UsuariosAdminComponent } from './components/admin/usuariosAdmin/usuariosAdmin.component';
 import { EmpFormComponent } from './components/admin/empresas/empForm/empForm.component';
 
 import { EmpresaService } from './models/services/empresa.service';
 import { UsuarioService } from './models/services/usuario.service';
-import { UserFormComponent } from './components/admin/usuarios/userForm/userForm.component';
+import { UserAdminFormComponent } from './components/admin/usuariosAdmin/userAdminForm/userAdminForm.component';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { AuthService } from './models/services/auth.service';
@@ -28,6 +28,8 @@ import { PuestosComponent } from './components/user/puestos/puestos.component';
 import { EmpleadosComponent } from './components/user/empleados/empleados.component';
 import { DivisionesComponent } from './components/user/divisiones/divisiones.component';
 import { DivisionesFormComponent } from './components/user/divisiones/divisionesForm/divisionesForm.component';
+import { UsuariosComponent } from './components/user/usuarios/usuarios.component';
+import { UsuariosFormComponent } from './components/user/usuarios/usuariosForm/usuariosForm.component';
 
 @NgModule({
   declarations: [
@@ -36,9 +38,9 @@ import { DivisionesFormComponent } from './components/user/divisiones/divisiones
     FooterComponent,
     NavbarComponent,
     EmpresasComponent,
-    UsuariosComponent,
+    UsuariosAdminComponent,
     EmpFormComponent,
-    UserFormComponent,
+    UserAdminFormComponent,
     LoginComponent,
     HomeComponent,
     InicioComponent,
@@ -47,7 +49,9 @@ import { DivisionesFormComponent } from './components/user/divisiones/divisiones
     PuestosComponent,
     EmpleadosComponent,
     DivisionesComponent,
-    DivisionesFormComponent
+    DivisionesFormComponent,
+    UsuariosComponent,
+    UsuariosFormComponent
   ],
   imports: [
     BrowserModule,

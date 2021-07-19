@@ -10,10 +10,10 @@ import { AuthService } from 'src/app/models/services/auth.service';
 
 @Component({
   selector: 'app-usuarios',
-  templateUrl: './usuarios.component.html',
-  styleUrls: ['./usuarios.component.css']
+  templateUrl: './usuariosAdmin.component.html',
+  styleUrls: ['./usuariosAdmin.component.css']
 })
-export class UsuariosComponent implements OnInit {
+export class UsuariosAdminComponent implements OnInit {
 
   rfc!: any;
 

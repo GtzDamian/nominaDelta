@@ -4,6 +4,7 @@ import { Division } from 'src/app/models/dto/division';
 import { DivisionService } from 'src/app/models/services/division.service';
 import { AuthService } from 'src/app/models/services/auth.service';
 import Swal from 'sweetalert2';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-divisionesForm',
@@ -18,8 +19,11 @@ export class DivisionesFormComponent implements OnInit {
   constructor(
     private divisionService: DivisionService, 
     private router: Router,
+    private title: Title,
     private activatedRoute: ActivatedRoute,
-    public authService: AuthService) { }
+    public authService: AuthService) {
+      this.title.setTitle("Divisiones | Información Gerencial - Nómina");
+     }
 
   ngOnInit(): void {
     this.rfcCheck();

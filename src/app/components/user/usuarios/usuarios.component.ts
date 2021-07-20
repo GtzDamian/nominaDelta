@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 import { Usuario } from '../../../models/dto/usuario';
 import { UsuarioService } from '../../../models/services/usuario.service';
 import { AuthService } from 'src/app/models/services/auth.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-usuarios',
@@ -19,7 +20,9 @@ export class UsuariosComponent implements OnInit {
     private usuarioService: UsuarioService,
     public router: Router, 
     private activatedRoute: ActivatedRoute,
+    private title: Title,
     private authService: AuthService) {
+      this.title.setTitle("Usuarios | Información Gerencial - Nómina");
     }
    
 

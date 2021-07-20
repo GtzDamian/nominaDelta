@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 import { Usuario } from 'src/app/models/dto/usuario'; 
 import { UsuarioService } from 'src/app/models/services/usuario.service';
 import { AuthService } from 'src/app/models/services/auth.service';
+import { Title } from '@angular/platform-browser';
 
 
 @Component({
@@ -19,8 +20,11 @@ export class UsuariosFormComponent implements OnInit {
     public authService: AuthService,
     public usuarioService: UsuarioService,
     public router: Router,
+    private title: Title,
     private activatedRoute: ActivatedRoute
-  ) { }
+  ) { 
+    this.title.setTitle("Usuarios | Información Gerencial - Nómina")
+  }
 
   ngOnInit(): void {
     this.cargarUsuario();

@@ -1,0 +1,91 @@
+<div class="container-fluid">
+    <div class="container">
+        <div class="row mt-3">
+            <h2><strong>Consulta Por División</strong></h2>
+        </div>
+    </div>
+    <div class="row mt-3 div-table mx-2" style="overflow-x: auto;">
+        <div class="w-100">
+            <table class="table table-bordered table-striped">
+                <thead class="text-center justify-content-center">
+                    <th>Cons. Por Concepto</th>
+                    <th>Cons. Por Empleado</th>
+                    <th>Gráfica</th>
+                    <th>RFC</th>
+                    <th>División</th>
+                    <th>Departamento</th>
+                    <th>Nombre</th>
+                    <th>Nivel</th>
+                    <th>Nombre Gráfica</th>
+                    <th>Total-$</th>
+                    <th>Enero-$</th>
+                    <th>Febrero-$</th>
+                    <th>Marzo-$</th>
+                    <th>Abril-$</th>
+                    <th>Mayo-$</th>
+                    <th>Junio-$</th>
+                    <th>Julio-$</th>
+                    <th>Agosto-$</th>
+                    <th>Septiembre-$</th>
+                    <th>Octubre-$</th>
+                    <th>Noviembre-$</th>
+                    <th>Diciembre-$</th>
+                    <th>Enero-No.</th>
+                    <th>Febrero-No.</th>
+                    <th>Marzo-No.</th>
+                    <th>Abril-No.</th>
+                    <th>Mayo-No.</th>
+                    <th>Junio-No.</th>
+                    <th>Julio-No.</th>
+                    <th>Agosto-No.</th>
+                    <th>Septiembre-No.</th>
+                    <th>Octubre-No.</th>
+                    <th>Noviembre-No.</th>
+                    <th>Diciembre-No.</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let division of divisiones">
+                        <th><button class="btn btn-principal" title="Consulta Por Concepto"><i class="fas fa-search"></i></button></th>
+                        <th><button class="btn btn-principal"><i class="fas fa-search" title="Consulta Por Empleado"></i></button></th>
+                        <th><button class="btn btn-principal"><i class="fas fa-chart-bar" title="Gráfica"></i></button></th>
+                        <td>{{division.rfc.rfc}}</td>
+                        <td>{{division.division}}</td>
+                        <td>{{division.departamento}}</td>
+                        <td>{{division.nombre}}</td>
+                        <td>{{division.nivel}}</td>
+                        <td>{{division.nomGraf}}</td>
+                        <td>{{division.imp0}}</td>
+                        <td>{{division.imp1}}</td>
+                        <td>{{division.imp2}}</td>
+                        <td>{{division.imp3}}</td>
+                        <td>{{division.imp4}}</td>
+                        <td>{{division.imp5}}</td>
+                        <td>{{division.imp6}}</td>
+                        <td>{{division.imp7}}</td>
+                        <td>{{division.imp8}}</td>
+                        <td>{{division.imp9}}</td>
+                        <td>{{division.imp10}}</td>
+                        <td>{{division.imp11}}</td>
+                        <td>{{division.imp12}}</td>
+                        <td>{{division.cant1}}</td>
+                        <td>{{division.cant2}}</td>
+                        <td>{{division.cant3}}</td>
+                        <td>{{division.cant4}}</td>
+                        <td>{{division.cant5}}</td>
+                        <td>{{division.cant6}}</td>
+                        <td>{{division.cant7}}</td>
+                        <td>{{division.cant8}}</td>
+                        <td>{{division.cant9}}</td>
+                        <td>{{division.cant10}}</td>
+                        <td>{{division.cant11}}</td>
+                        <td>{{division.cant12}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="container">
+        <input type="checkbox" (input)="filtroImportes()"> Importes
+        <input type="checkbox" (input)="filtroEmpleados()"> Empleados
+    </div>
+</div>

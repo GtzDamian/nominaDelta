@@ -6,6 +6,7 @@ import { Empresa } from '../../../models/dto/empresa';
 import { UsuarioService } from '../../../models/services/usuario.service';
 import { EmpresaService } from '../../../models/services/empresa.service';
 import { AuthService } from 'src/app/models/services/auth.service';
+import { Title } from '@angular/platform-browser';
 
 
 @Component({
@@ -28,11 +29,14 @@ export class UsuariosAdminComponent implements OnInit {
     private empresaService: EmpresaService, 
     public router: Router, 
     private activatedRoute: ActivatedRoute,
-    private authService: AuthService) {
+    private authService: AuthService,
+    private title: Title) {
       this.activatedRoute.params.subscribe(params => {
         let rfcUrl = params['id'];
         this.rfc = rfcUrl;
     });
+
+    this.title.setTitle("Usuarios | Información Gerencial - Nómina")
    }
 
   ngOnInit(): void {

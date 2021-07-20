@@ -30,6 +30,8 @@ import { DivisionesComponent } from './components/user/divisiones/divisiones.com
 import { DivisionesFormComponent } from './components/user/divisiones/divisionesForm/divisionesForm.component';
 import { UsuariosComponent } from './components/user/usuarios/usuarios.component';
 import { UsuariosFormComponent } from './components/user/usuarios/usuariosForm/usuariosForm.component';
+import { GeneralesComponent } from './components/user/generales/generales.component';
+import { CPorDivisionComponent } from './components/user/cPorDivision/cPorDivision.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +53,9 @@ import { UsuariosFormComponent } from './components/user/usuarios/usuariosForm/u
     DivisionesComponent,
     DivisionesFormComponent,
     UsuariosComponent,
-    UsuariosFormComponent
+    UsuariosFormComponent,
+    GeneralesComponent,
+    CPorDivisionComponent
   ],
   imports: [
     BrowserModule,

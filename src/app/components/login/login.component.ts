@@ -3,6 +3,7 @@ import { Usuario } from '../../models/dto/usuario';
 import Swal from 'sweetalert2';
 import { AuthService } from '../../models/services/auth.service';
 import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-login',
@@ -11,15 +12,16 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  title:String = " Sistema de Información Gerencial - Nómina";
   usuario!: Usuario;
   role: string = "ROLE_ADMIN";
 
   constructor(
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private title: Title
   ) {
     this.usuario = new Usuario();
+    this.title.setTitle("Login | Información Gerencial - Nómina")
    }
 
   ngOnInit(){

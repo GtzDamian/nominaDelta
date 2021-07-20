@@ -17,6 +17,8 @@ import { AuthGuard } from './models/guards/auth.guard';
 import { RoleGuard } from './models/guards/role.guard';
 import { UsuariosComponent } from './components/user/usuarios/usuarios.component';
 import { UsuariosFormComponent } from './components/user/usuarios/usuariosForm/usuariosForm.component';
+import { GeneralesComponent } from './components/user/generales/generales.component';
+import { CPorDivisionComponent } from './components/user/cPorDivision/cPorDivision.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -39,6 +41,8 @@ const routes: Routes = [
   {path: 'sig/home/:id/usuarios', component: UsuariosComponent},
   {path: 'sig/home/:id/usuarios/usuario', component: UsuariosFormComponent},
   {path: 'sig/home/:id/usuarios/usuario/:idUsr', component: UsuariosFormComponent},
+  {path: 'sig/home/:id/datos-generales', component: GeneralesComponent},
+  {path: 'sig/home/:id/por-division', component: CPorDivisionComponent}
   
 ];
 

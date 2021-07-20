@@ -62,6 +62,15 @@ export class AuthService {
     this._usuario.tDivisiones = payload.tDivisiones;
     this._usuario.tUsuarios = payload.tUsuarios;
     this._usuario.tDatosGenerales = payload.tDatosGenerales;
+
+    this._usuario.cPorDivision = payload.cPorDivision;
+    this._usuario.cPorConcepto = payload.cPorConcepto;
+    this._usuario.cPorEmpleado = payload.cPorEmpleado;
+    this._usuario.cDeEmpleado = payload.cDeEmpleado;
+
+    this._usuario.eExcel = payload.eExcel;
+    this._usuario.ePdf = payload.ePdf;
+
     sessionStorage.setItem('usuario', JSON.stringify(this._usuario));
   }
 

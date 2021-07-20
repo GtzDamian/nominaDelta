@@ -29,6 +29,10 @@ export class DivisionService {
     return this.http.get<Division>(this.urlEndpoint + "/division/" + id);
   }
 
+  getDivisionesConsulta(id: string):Observable<Division[]>{
+    return this.http.get<Division[]>(this.urlEndpoint + "/consulta/" + id);
+  }
+
   create(division: Division, id: any):Observable<Division[]>{
     return this.http.post<Division[]>(this.urlEndpoint + "/" + id + "/division", division).pipe(
      catchError(e => {

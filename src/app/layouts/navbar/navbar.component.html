@@ -25,27 +25,27 @@
             <div *ngIf="this.authService.usuario.tDivisiones === true || this.authService.usuario.tUsuarios === true || this.authService.usuario.tDatosGenerales === true"  class="dropdown-divider"></div>
             <button *ngIf="this.authService.usuario.tDivisiones === true"class="dropdown-item btn btn-nav" [routerLink]="'/sig/home/' + this.authService.usuario.empresa + '/divisiones'">Divisiones</button>
             <button *ngIf="this.authService.usuario.tUsuarios === true" class="dropdown-item btn btn-nav" [routerLink]="'/sig/home/' + this.authService.usuario.empresa + '/usuarios'">Usuarios</button>
-            <button *ngIf="this.authService.usuario.tDatosGenerales === true" class="dropdown-item btn btn-nav" [routerLink]="'/sig/home/' + this.authService.usuario.empresa + '/divisiones'">Datos Generales</button>
+            <button *ngIf="this.authService.usuario.tDatosGenerales === true" class="dropdown-item btn btn-nav" [routerLink]="'/sig/home/' + this.authService.usuario.empresa + '/datos-generales'">Datos Generales</button>
           </div>
         </li>
         <li *ngIf="this.authService.hasRole('ROLE_USER') && authService.isAuthenticated() && router.url !== '/home'" class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link dropdown-toggle btn-nav" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <span>Consultas</span>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item btn">Por División</a>
-            <a class="dropdown-item btn">Por Concepto</a>
-            <a class="dropdown-item btn">Por Empleado</a>
+            <button *ngIf="this.authService.usuario.cPorDivision === true" class="dropdown-item btn btn-nav" [routerLink]="'/sig/home/' + this.authService.usuario.empresa + '/por-division'">Por División</button>
+            <button *ngIf="this.authService.usuario.cPorConcepto === true" class="dropdown-item btn btn-nav" [routerLink]="'/sig/home/' + this.authService.usuario.empresa + '/por-concepto'">Por Concepto</button>
+            <button *ngIf="this.authService.usuario.cPorEmpleado === true" class="dropdown-item btn btn-nav" [routerLink]="'/sig/home/' + this.authService.usuario.empresa + '/por-empleado'">Por Empleado</button>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item btn">Empleado</a>
+            <button *ngIf="this.authService.usuario.cDeEmpleado === true" class="dropdown-item btn btn-nav" [routerLink]="'/sig/home/' + this.authService.usuario.empresa + '/de-empleado'">Por División</button>
           </div>
         </li>
         <li *ngIf="authService.isAuthenticated() && router.url !== '/home'" class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link dropdown-toggle btn-nav" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <b>Usuario: </b>{{authService.usuario.username}}
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item btn " (click)="logout()">Cerrar Sesión</a>
+            <a class="dropdown-item btn btn-nav" (click)="logout()">Cerrar Sesión</a>
           </div>
         </li>
       </ul>

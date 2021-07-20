@@ -3,6 +3,7 @@ import { Empresa } from '../../../../models/dto/empresa';
 import { EmpresaService } from '../../../../models/services/empresa.service';
 import {Router, Routes, ActivatedRoute} from '@angular/router';
 import Swal from 'sweetalert2';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-empForm',
@@ -17,7 +18,10 @@ export class EmpFormComponent implements OnInit {
   constructor(
     private empresaService: EmpresaService, 
     private router: Router,
-    private activatedRoute: ActivatedRoute) { }
+    private activatedRoute: ActivatedRoute,
+    private title: Title) {
+      this.title.setTitle("Empresas | Información Gerencial - Nómina")
+     }
 
     
     

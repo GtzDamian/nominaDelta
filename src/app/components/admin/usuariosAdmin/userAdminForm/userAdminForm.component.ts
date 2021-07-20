@@ -4,6 +4,7 @@ import { UsuarioService } from '../../../../models/services/usuario.service';
 import {Router, Routes, ActivatedRoute} from '@angular/router';
 import { Location } from '@angular/common';
 import Swal from 'sweetalert2';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-userForm',
@@ -18,7 +19,10 @@ export class UserAdminFormComponent implements OnInit {
     private usuarioService: UsuarioService, 
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private location: Location) { }
+    private location: Location,
+    private title: Title) {
+      this.title.setTitle("Usuarios | Información Gerencial - Nómina")
+     }
 
   ngOnInit(): void {
     this.cargarUsuario();

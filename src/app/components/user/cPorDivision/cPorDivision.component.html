@@ -3,8 +3,15 @@
         <div class="row mt-3">
             <h2><strong>Consulta Por División</strong></h2>
         </div>
+        <div class="row mt-3 justify-content-center">
+            <div class="col-lg-4 text-center">
+                <a href="" class="link btn">
+                    <i class="fas fa-file-excel i-excel" ></i> Exportar a Excel
+                </a>
+            </div>
+        </div>
     </div>
-    <div class="row mt-3 div-table mx-2" style="overflow-x: auto;">
+    <div class="row mt-3 div-tabla mx-2" style="overflow-x: auto;">
         <div class="w-100">
             <table class="table table-bordered table-striped">
                 <thead class="text-center justify-content-center">
@@ -54,19 +61,19 @@
                         <td>{{division.nombre}}</td>
                         <td>{{division.nivel}}</td>
                         <td>{{division.nomGraf}}</td>
-                        <td>{{division.imp0}}</td>
-                        <td>{{division.imp1}}</td>
-                        <td>{{division.imp2}}</td>
-                        <td>{{division.imp3}}</td>
-                        <td>{{division.imp4}}</td>
-                        <td>{{division.imp5}}</td>
-                        <td>{{division.imp6}}</td>
-                        <td>{{division.imp7}}</td>
-                        <td>{{division.imp8}}</td>
-                        <td>{{division.imp9}}</td>
-                        <td>{{division.imp10}}</td>
-                        <td>{{division.imp11}}</td>
-                        <td>{{division.imp12}}</td>
+                        <td>{{division.imp0 | currency}}</td>
+                        <td>{{division.imp1 | currency}}</td>
+                        <td>{{division.imp2 | currency}}</td>
+                        <td>{{division.imp3 | currency}}</td>
+                        <td>{{division.imp4 | currency}}</td>
+                        <td>{{division.imp5 | currency}}</td>
+                        <td>{{division.imp6 | currency}}</td>
+                        <td>{{division.imp7 | currency}}</td>
+                        <td>{{division.imp8 | currency}}</td>
+                        <td>{{division.imp9 | currency}}</td>
+                        <td>{{division.imp10 | currency}}</td>
+                        <td>{{division.imp11 | currency}}</td>
+                        <td>{{division.imp12 | currency}}</td>
                         <td>{{division.cant1}}</td>
                         <td>{{division.cant2}}</td>
                         <td>{{division.cant3}}</td>

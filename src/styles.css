@@ -67,3 +67,8 @@ html, body{
 td{
   white-space: nowrap;
 }
+
+tr:hover{
+  background-color: #90B8D8 !important;
+  color: white !important;
+}

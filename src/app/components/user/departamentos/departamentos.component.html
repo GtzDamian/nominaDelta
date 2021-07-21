@@ -49,6 +49,11 @@
                             <td>{{departamento.departamento}}</td>
                             <td>{{departamento.nombre}}</td>
                         </tr>
+                        <tr *ngIf="registrosTotales == 0">
+                            <td colspan="2">
+                                <span><strong>No Hay Registros</strong></span>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>

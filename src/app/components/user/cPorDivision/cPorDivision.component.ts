@@ -13,7 +13,7 @@ export class CPorDivisionComponent implements OnInit {
 
   division: Division = new Division();
   divisiones!: Division[];
-  impCheck: boolean= false;
+  impCheck: boolean= true;
   empCheck: boolean = false;
   
   
@@ -40,19 +40,25 @@ export class CPorDivisionComponent implements OnInit {
     })
   }
 
-  filtroImportes(){
+  checkImp(){
     if(this.impCheck == false){
       this.impCheck = true;
     }else{
       this.impCheck = false;
     }
+    if(this.impCheck == false && this.empCheck == false){
+      this.empCheck = true;
+    }
   }
 
-  filtroEmpleados(){
+  checkEmp(){
     if(this.empCheck == false){
       this.empCheck = true;
     }else{
       this.empCheck = false;
+    }
+    if(this.impCheck == false && this.empCheck == false){
+      this.impCheck = true;
     }
   }
 }

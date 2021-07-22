@@ -10,13 +10,33 @@
                 </a>
             </div>
         </div>
+        <div class="row mt-4 justify-content-center">
+            <div class="form-group form-check mx-3">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1" (change)="checkImp()" [checked]="impCheck === true">
+                <label class="form-check-label" for="exampleCheck1" >Importes</label>
+              </div>
+              <div class="form-group form-check mx-3">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1" (change)="checkEmp()" [checked]="empCheck === true">
+                <label class="form-check-label" for="exampleCheck1">Empleados</label>
+              </div>
+              <div class="form-group mx-3">
+                <label for="exampleFormControlSelect1">Nivel</label>
+                <select class="form-control" id="exampleFormControlSelect1">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </select>
+              </div>
+        </div>
     </div>
     <div class="row mt-3 div-tabla mx-2" style="overflow-x: auto;">
         <div class="w-100">
             <table class="table table-bordered table-striped">
                 <thead class="text-center justify-content-center">
-                    <th>Cons. Por Concepto</th>
-                    <th>Cons. Por Empleado</th>
+                    <th>C. Por Concepto</th>
+                    <th>C. Por Empleado</th>
                     <th>Gráfica</th>
                     <th>RFC</th>
                     <th>División</th>
@@ -24,75 +44,71 @@
                     <th>Nombre</th>
                     <th>Nivel</th>
                     <th>Nombre Gráfica</th>
-                    <th>Total-$</th>
-                    <th>Enero-$</th>
-                    <th>Febrero-$</th>
-                    <th>Marzo-$</th>
-                    <th>Abril-$</th>
-                    <th>Mayo-$</th>
-                    <th>Junio-$</th>
-                    <th>Julio-$</th>
-                    <th>Agosto-$</th>
-                    <th>Septiembre-$</th>
-                    <th>Octubre-$</th>
-                    <th>Noviembre-$</th>
-                    <th>Diciembre-$</th>
-                    <th>Enero-No.</th>
-                    <th>Febrero-No.</th>
-                    <th>Marzo-No.</th>
-                    <th>Abril-No.</th>
-                    <th>Mayo-No.</th>
-                    <th>Junio-No.</th>
-                    <th>Julio-No.</th>
-                    <th>Agosto-No.</th>
-                    <th>Septiembre-No.</th>
-                    <th>Octubre-No.</th>
-                    <th>Noviembre-No.</th>
-                    <th>Diciembre-No.</th>
+                    <th *ngIf="impCheck === true">Total-$</th>
+                    <th *ngIf="impCheck === true">Enero-$</th>
+                    <th *ngIf="empCheck === true">Enero-No.</th>
+                    <th *ngIf="impCheck === true">Febrero-$</th>
+                    <th *ngIf="empCheck === true">Febrero-No.</th>
+                    <th *ngIf="impCheck === true">Marzo-$</th>
+                    <th *ngIf="empCheck === true">Marzo-No.</th>
+                    <th *ngIf="impCheck === true">Abril-$</th>
+                    <th *ngIf="empCheck === true">Abril-No.</th>
+                    <th *ngIf="impCheck === true">Mayo-$</th>
+                    <th *ngIf="empCheck === true">Mayo-No.</th>
+                    <th *ngIf="impCheck === true">Junio-$</th>
+                    <th *ngIf="empCheck === true">Junio-No.</th>
+                    <th *ngIf="impCheck === true">Julio-$</th>
+                    <th *ngIf="empCheck === true">Julio-No.</th>
+                    <th *ngIf="impCheck === true">Agosto-$</th>
+                    <th *ngIf="empCheck === true">Agosto-No.</th>
+                    <th *ngIf="impCheck === true">Septiembre-$</th>
+                    <th *ngIf="empCheck === true">Septiembre-No.</th>
+                    <th *ngIf="impCheck === true">Octubre-$</th>
+                    <th *ngIf="empCheck === true">Octubre-No.</th>
+                    <th *ngIf="impCheck === true">Noviembre-$</th>
+                    <th *ngIf="empCheck === true">Noviembre-No.</th>
+                    <th *ngIf="impCheck === true">Diciembre-$</th>
+                    <th *ngIf="empCheck === true">Diciembre-No.</th>                 
                 </thead>
                 <tbody>
                     <tr *ngFor="let division of divisiones">
-                        <th><button class="btn btn-principal" title="Consulta Por Concepto"><i class="fas fa-search"></i></button></th>
-                        <th><button class="btn btn-principal"><i class="fas fa-search" title="Consulta Por Empleado"></i></button></th>
-                        <th><button class="btn btn-principal"><i class="fas fa-chart-bar" title="Gráfica"></i></button></th>
-                        <td>{{division.rfc.rfc}}</td>
+                        <th class="text-center"><button class="btn btn-principal" title="Consulta Por Concepto"><i class="fas fa-search"></i></button></th>
+                        <th class="text-center"><button class="btn btn-principal"><i class="fas fa-search" title="Consulta Por Empleado"></i></button></th>
+                        <th class="text-center"><button class="btn btn-principal"><i class="fas fa-chart-bar" title="Gráfica"></i></button></th>
+                        <td class="text-center">{{division.rfc.rfc}}</td>
                         <td>{{division.division}}</td>
                         <td>{{division.departamento}}</td>
                         <td>{{division.nombre}}</td>
                         <td>{{division.nivel}}</td>
                         <td>{{division.nomGraf}}</td>
-                        <td>{{division.imp0 | currency}}</td>
-                        <td>{{division.imp1 | currency}}</td>
-                        <td>{{division.imp2 | currency}}</td>
-                        <td>{{division.imp3 | currency}}</td>
-                        <td>{{division.imp4 | currency}}</td>
-                        <td>{{division.imp5 | currency}}</td>
-                        <td>{{division.imp6 | currency}}</td>
-                        <td>{{division.imp7 | currency}}</td>
-                        <td>{{division.imp8 | currency}}</td>
-                        <td>{{division.imp9 | currency}}</td>
-                        <td>{{division.imp10 | currency}}</td>
-                        <td>{{division.imp11 | currency}}</td>
-                        <td>{{division.imp12 | currency}}</td>
-                        <td>{{division.cant1}}</td>
-                        <td>{{division.cant2}}</td>
-                        <td>{{division.cant3}}</td>
-                        <td>{{division.cant4}}</td>
-                        <td>{{division.cant5}}</td>
-                        <td>{{division.cant6}}</td>
-                        <td>{{division.cant7}}</td>
-                        <td>{{division.cant8}}</td>
-                        <td>{{division.cant9}}</td>
-                        <td>{{division.cant10}}</td>
-                        <td>{{division.cant11}}</td>
-                        <td>{{division.cant12}}</td>
+                        <td *ngIf="impCheck === true" class="text-right">{{division.imp0 | currency}}</td>
+                        <td *ngIf="impCheck === true" class="text-right">{{division.imp1 | currency}}</td>
+                        <td *ngIf="empCheck === true" class="text-right">{{division.cant1}}</td>
+                        <td *ngIf="impCheck === true" class="text-right">{{division.imp2 | currency}}</td>
+                        <td *ngIf="empCheck === true" class="text-right">{{division.cant2}}</td>
+                        <td *ngIf="impCheck === true" class="text-right">{{division.imp3 | currency}}</td>
+                        <td *ngIf="empCheck === true" class="text-right">{{division.cant3}}</td>
+                        <td *ngIf="impCheck === true" class="text-right">{{division.imp4 | currency}}</td>
+                        <td *ngIf="empCheck === true" class="text-right">{{division.cant4}}</td>
+                        <td *ngIf="impCheck === true" class="text-right">{{division.imp5 | currency}}</td>
+                        <td *ngIf="empCheck === true" class="text-right">{{division.cant5}}</td>
+                        <td *ngIf="impCheck === true" class="text-right">{{division.imp6 | currency}}</td>
+                        <td *ngIf="empCheck === true" class="text-right">{{division.cant6}}</td>
+                        <td *ngIf="impCheck === true" class="text-right">{{division.imp7 | currency}}</td>
+                        <td *ngIf="empCheck === true" class="text-right">{{division.cant7}}</td>
+                        <td *ngIf="impCheck === true" class="text-right">{{division.imp8 | currency}}</td>
+                        <td *ngIf="empCheck === true" class="text-right">{{division.cant8}}</td>
+                        <td *ngIf="impCheck === true" class="text-right">{{division.imp9 | currency}}</td>
+                        <td *ngIf="empCheck === true" class="text-right">{{division.cant9}}</td>
+                        <td *ngIf="impCheck === true" class="text-right">{{division.imp10 | currency}}</td>
+                        <td *ngIf="empCheck === true" class="text-right">{{division.cant10}}</td>
+                        <td *ngIf="impCheck === true" class="text-right">{{division.imp11 | currency}}</td>
+                        <td *ngIf="empCheck === true" class="text-right">{{division.cant11}}</td>
+                        <td *ngIf="impCheck === true" class="text-right">{{division.imp12 | currency}}</td>
+                        <td *ngIf="empCheck === true" class="text-right">{{division.cant12}}</td>    
                     </tr>
                 </tbody>
             </table>
         </div>
-    </div>
-    <div class="container">
-        <input type="checkbox" (input)="filtroImportes()"> Importes
-        <input type="checkbox" (input)="filtroEmpleados()"> Empleados
     </div>
 </div>

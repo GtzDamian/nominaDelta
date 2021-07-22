@@ -19,25 +19,29 @@
                 </a>
             </div>
         </div>
-        <div class="row mt-3">
+        <div class="row mt-5">
             <h5>
                 <strong>
                     Filtrar por:
                 </strong>
             </h5>
         </div>
-        <div class="row mt-2 justify-content-center">
-            <div class="col-lg-3 col-md-6 col-10 my-2">
-                <input type="text" class="form-control" placeholder="# de Empleado" oninput="this.value = this.value.toUpperCase()" id="empleado" type="text" name="empleado" [(ngModel)]="empleado.empleado" (input)="filtro()">
+        <div class="form-row mt-2 justify-content-around">
+            <div class="form-group col-lg-3 col-md-5 col-6">
+                <label for="empleado"><strong># de Empleado</strong></label>
+                <input type="text" class="form-control" oninput="this.value=this.value.toUpperCase()" id="empleado" name="empleado" [(ngModel)]="empleado.empleado" (input)="filtro()">
             </div>
-            <div class="col-lg-3 col-md-6 col-10 my-2">
-                <input type="text" class="form-control" placeholder="Nombre de Empleado" oninput="this.value = this.value.toUpperCase()" id="nombre" type="text" name="nombre" [(ngModel)]="empleado.nombre" (input)="filtro()">
+            <div class="form-group col-lg-3 col-md-5 col-6">
+                <label for="nombre"><strong>Nombre de Empleado</strong></label>
+                <input type="text" class="form-control" oninput="this.value=this.value.toUpperCase()" id="nombre" name="nombre" [(ngModel)]="empleado.nombre" (input)="filtro()">
             </div>
-            <div class="col-lg-3 col-md-6 col-10 my-2">
-                <input type="text" class="form-control" placeholder="# de Departamento" oninput="this.value = this.value.toUpperCase()" id="departamento" type="text" name="departamento" [(ngModel)]="empleado.departamento" (input)="filtro()">
+            <div class="form-group col-lg-3 col-md-5 col-6">
+                <label for="departamento"><strong># de Departamento</strong></label>
+                <input type="text" class="form-control" oninput="this.value=this.value.toUpperCase()" id="departamento" name="departamento" [(ngModel)]="empleado.departamento" (input)="filtro()">
             </div>
-            <div class="col-lg-3 col-md-6 col-10 my-2">
-                <input type="text" class="form-control" placeholder="# de Puesto" oninput="this.value = this.value.toUpperCase()" id="puesto" type="text" name="puesto" [(ngModel)]="empleado.puesto" (input)="filtro()">
+            <div class="form-group col-lg-3 col-md-5 col-6">
+                <label for="puesto"><strong># de Puesto</strong></label>
+                <input type="text" class="form-control"oninput="this.value=this.value.toUpperCase()" id="puesto" name="puesto" [(ngModel)]="empleado.puesto" (input)="filtro()">
             </div>
         </div>
         <div class="row mt-4 justify-content-center">

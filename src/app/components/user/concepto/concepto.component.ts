@@ -18,6 +18,7 @@ export class ConceptoComponent implements OnInit {
   public concepto:Concepto = new Concepto();
   conceptos!: Concepto[];
   registrosTotales!: number;
+  blob!: Blob;
 
   constructor(
     private conceptoService: ConceptoService,
@@ -55,4 +56,34 @@ filtro(){
       }
     }) 
   }
+
+exportPdf(){
+  this.activatedRoute.params.subscribe(params => {
+    let id = params['id']
+      if(id){
+        this.conceptoService.file(id, this.concepto.concepto, this.concepto.nombre).subscribe(
+          (data) =>{
+            this.blob = new Blob([data], {type: 'application/pdf'});
+            var downloadURL = window.URL.createObjectURL(data);
+            var link = document.createElement('a');
+            link.href = downloadURL;
+            link.download = "help.pdf";
+            link.click();
+          }
+        );
+      }
+    }) 
+}
+
+/*
+public create():void{
+    if(this.empresa.rfc == null ||  this.empresa.rfc == '' || this.empresa.razonSocial == null || this.empresa.razonSocial == ''){
+      Swal.fire('Error', 'RFC o Razón Social vacíos', 'error')
+    }else{
+      this.empresaService.create(this.empresa).subscribe(empresa => {
+        Swal.fire('Registro exitoso', this.empresa.razonSocial + ' registrada correctamente', 'success');
+        this.router.navigate(['/sig/admin'])
+      })
+    }
+  }*/ 
 }

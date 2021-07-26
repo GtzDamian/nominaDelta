@@ -38,6 +38,10 @@ export class EmpresaService {
     );
   }
 
+  getEmpresaByRfc(rfc: any):Observable<Empresa>{
+    return this.http.get<Empresa>(this.urlEndPoint + "/rfc/" + rfc );
+  }
+
   create(empresa: Empresa):Observable<Empresa[]>{
     return this.http.post<Empresa[]>(this.urlEndPoint, empresa).pipe(
      catchError(e => {

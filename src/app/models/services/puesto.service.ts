@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -20,6 +20,20 @@ export class PuestoService {
 
   getPuestos(id: string):Observable<Puesto[]>{
     return this.http.get<Puesto[]>(this.urlEndpoint + "/" + id);
+  }
+
+  file(id: string, puesto: any, nombre: any, razonSocial: any, registrosTotales: number):Observable<any>{
+    let headers = new HttpHeaders();
+    if(puesto == undefined){
+      puesto = "";
+    }  
+    if(nombre == undefined){
+     nombre = "";
+    }
+    let params:any = new URLSearchParams();
+    params.append("puesto", puesto);
+    params.append("nombre", nombre);
+    return this.http.get<any>(this.urlEndpoint + "/" + id + "/pdf?puesto=" + puesto + "&nombre=" + nombre + "&razonSocial=" + razonSocial + "&registrosTotales=" + registrosTotales, {responseType: 'blob' as 'json'});
   }
 
   getPuestosFiltro(id: string, puesto: any, nombre: any): Observable<Puesto[]>{

@@ -26,37 +26,20 @@ export class ConceptoService {
     return this.http.get<Concepto[]>(this.urlEndpoint + "/" + id);
   }
 
-
-
-  file(id: string, concepto: any, nombre: any):Observable<any>{
-
+  file(id: string, concepto: any, nombre: any, razonSocial: any, registrosTotales: number):Observable<any>{
     let headers = new HttpHeaders();
-    //headers = headers.set('Accept', 'application/pdf');
-
-
     if(concepto == undefined){
       concepto = "";
     }  
     if(nombre == undefined){
      nombre = "";
     }
-  
     let params:any = new URLSearchParams();
     params.append("concepto", concepto);
     params.append("nombre", nombre);
-    return this.http.get<any>(this.urlEndpoint + "/" + id + "/pdf?concepto=" + concepto + "&nombre=" + nombre, {responseType: 'blob' as 'json'});
+    return this.http.get<any>(this.urlEndpoint + "/" + id + "/pdf?concepto=" + concepto + "&nombre=" + nombre + "&razonSocial=" + razonSocial + "&registrosTotales=" + registrosTotales, {responseType: 'blob' as 'json'});
   }
-
-  
    
-
-
-
-
-
-
-
-
   getConceptosFiltro(id: string, concepto: any, nombre: any): Observable<Concepto[]>{
     if(concepto == undefined){
       concepto = "";

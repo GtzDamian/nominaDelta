@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ConceptoService } from 'src/app/models/services/concepto.service';
 import { AuthService } from 'src/app/models/services/auth.service';
+import { EmpresaService } from 'src/app/models/services/empresa.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { Concepto } from 'src/app/models/dto/concepto';
-
+import { Empresa } from 'src/app/models/dto/empresa';
 
 declare var $: any;
 
@@ -16,12 +17,16 @@ declare var $: any;
 export class ConceptoComponent implements OnInit {
 
   public concepto:Concepto = new Concepto();
+  rfc!: string;
   conceptos!: Concepto[];
   registrosTotales!: number;
+  empresa: Empresa = new Empresa();
+
   blob!: Blob;
 
   constructor(
     private conceptoService: ConceptoService,
+    private empresaService: EmpresaService,
     private authService: AuthService,
     private router: Router,
     private title: Title,
@@ -31,7 +36,8 @@ export class ConceptoComponent implements OnInit {
 
 ngOnInit(): void {
   this.activatedRoute.params.subscribe(params => {
-    let id = params['id']
+    let id = params['id'];
+    this.rfc = id;
     if(id){
       this.conceptoService.getConceptos(id).subscribe(
         (conceptos) => {
@@ -41,49 +47,46 @@ ngOnInit(): void {
       )
     }
   }) 
+
+  this.cargarEmpresa();
+ 
+}
+
+cargarEmpresa(){
+  this.empresaService.getEmpresaByRfc(this.rfc).subscribe(
+    (empresa) => {
+      this.empresa = empresa
+    }
+  )
 }
   
 filtro(){
-  this.activatedRoute.params.subscribe(params => {
-    let id = params['id']
-      if(id){
-        this.conceptoService.getConceptosFiltro(id, this.concepto.concepto, this.concepto.nombre).subscribe(
-          (conceptos) => {
-            this.conceptos = conceptos;
-            this.registrosTotales = conceptos.length;
-          }
-        )
+  if(this.rfc){
+    this.conceptoService.getConceptosFiltro(this.rfc, this.concepto.concepto, this.concepto.nombre).subscribe(
+      (conceptos) => {
+        this.conceptos = conceptos;
+        this.registrosTotales = conceptos.length;
       }
-    }) 
+    )
+  }
   }
 
 exportPdf(){
-  this.activatedRoute.params.subscribe(params => {
-    let id = params['id']
-      if(id){
-        this.conceptoService.file(id, this.concepto.concepto, this.concepto.nombre).subscribe(
+  let fecha = new Date();
+    //alert(id + "_" + this.concepto.concepto + "_" + this.concepto.nombre + "_" + this.empresa.razonSocial + "_" + this.registrosTotales);
+      if(this.rfc){
+        this.conceptoService.file(this.rfc, this.concepto.concepto, this.concepto.nombre, this.empresa.razonSocial, this.registrosTotales).subscribe(
           (data) =>{
             this.blob = new Blob([data], {type: 'application/pdf'});
             var downloadURL = window.URL.createObjectURL(data);
             var link = document.createElement('a');
             link.href = downloadURL;
-            link.download = "help.pdf";
+            link.download = "Reporte de Conceptos al " + fecha.getDate() + "_" + fecha.getMonth() + "_" + fecha.getFullYear() + ".pdf";
             link.click();
           }
         );
       }
-    }) 
 }
 
-/*
-public create():void{
-    if(this.empresa.rfc == null ||  this.empresa.rfc == '' || this.empresa.razonSocial == null || this.empresa.razonSocial == ''){
-      Swal.fire('Error', 'RFC o Razón Social vacíos', 'error')
-    }else{
-      this.empresaService.create(this.empresa).subscribe(empresa => {
-        Swal.fire('Registro exitoso', this.empresa.razonSocial + ' registrada correctamente', 'success');
-        this.router.navigate(['/sig/admin'])
-      })
-    }
-  }*/ 
+
 }

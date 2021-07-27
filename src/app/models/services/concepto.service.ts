@@ -12,32 +12,36 @@ export class ConceptoService {
 
   private urlEndpoint: string = "http://localhost:8090/servicio-empresas/conceptos";
 
-  
-
   constructor(
     private http: HttpClient, 
     private router: Router,
     private authService: AuthService
   ) { }
 
-  
-
   getConceptos(id: string):Observable<Concepto[]>{
     return this.http.get<Concepto[]>(this.urlEndpoint + "/" + id);
   }
 
-  file(id: string, concepto: any, nombre: any, razonSocial: any, registrosTotales: number):Observable<any>{
-    let headers = new HttpHeaders();
+  exportPdf(id: string, concepto: any, nombre: any, razonSocial: any, registrosTotales: number):Observable<any>{
     if(concepto == undefined){
       concepto = "";
     }  
     if(nombre == undefined){
      nombre = "";
     }
-    let params:any = new URLSearchParams();
-    params.append("concepto", concepto);
-    params.append("nombre", nombre);
+
     return this.http.get<any>(this.urlEndpoint + "/" + id + "/pdf?concepto=" + concepto + "&nombre=" + nombre + "&razonSocial=" + razonSocial + "&registrosTotales=" + registrosTotales, {responseType: 'blob' as 'json'});
+  }
+
+  exportExcel(id: string, concepto: any, nombre: any, razonSocial: any, registrosTotales: number):Observable<any>{
+    if(concepto == undefined){
+      concepto = "";
+    }  
+    if(nombre == undefined){
+     nombre = "";
+    }
+  
+    return this.http.get<any>(this.urlEndpoint + "/" + id + "/excel?concepto=" + concepto + "&nombre=" + nombre + "&razonSocial=" + razonSocial + "&registrosTotales=" + registrosTotales, {responseType: 'blob' as 'json'});
   }
    
   getConceptosFiltro(id: string, concepto: any, nombre: any): Observable<Concepto[]>{
@@ -48,9 +52,7 @@ export class ConceptoService {
      nombre = "";
     }
   
-    let params:any = new URLSearchParams();
-    params.append("concepto", concepto);
-    params.append("nombre", nombre);
     return this.http.get<Concepto[]>(this.urlEndpoint + "/" + id + "/buscar/?concepto=" + concepto + "&nombre=" + nombre);
   }
+  
 }

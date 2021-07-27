@@ -36,6 +36,20 @@ export class PuestoService {
     return this.http.get<any>(this.urlEndpoint + "/" + id + "/pdf?puesto=" + puesto + "&nombre=" + nombre + "&razonSocial=" + razonSocial + "&registrosTotales=" + registrosTotales, {responseType: 'blob' as 'json'});
   }
 
+  fileExcel(id: string, puesto: any, nombre: any, razonSocial: any, registrosTotales: number):Observable<any>{
+    let headers = new HttpHeaders();
+    if(puesto == undefined){
+      puesto = "";
+    }  
+    if(nombre == undefined){
+     nombre = "";
+    }
+    let params:any = new URLSearchParams();
+    params.append("puesto", puesto);
+    params.append("nombre", nombre);
+    return this.http.get<any>(this.urlEndpoint + "/" + id + "/excel?puesto=" + puesto + "&nombre=" + nombre + "&razonSocial=" + razonSocial + "&registrosTotales=" + registrosTotales, {responseType: 'blob' as 'json'});
+  }
+
   getPuestosFiltro(id: string, puesto: any, nombre: any): Observable<Puesto[]>{
     if(puesto == undefined){
       puesto = "";

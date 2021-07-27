@@ -22,8 +22,7 @@ export class DepartamentoService {
     return this.http.get<Departamento[]>(this.urlEndpoint + "/" + id);
   }
 
-  file(id: string, departamento: any, nombre: any, razonSocial: any, registrosTotales: number):Observable<any>{
-    let headers = new HttpHeaders();
+  exportPdf(id: string, departamento: any, nombre: any, razonSocial: any, registrosTotales: number):Observable<any>{
     if(departamento == undefined){
       departamento = "";
     }  
@@ -31,10 +30,18 @@ export class DepartamentoService {
      nombre = "";
     }
   
-    let params:any = new URLSearchParams();
-    params.append("departamento", departamento);
-    params.append("nombre", nombre);
     return this.http.get<any>(this.urlEndpoint + "/" + id + "/pdf?departamento=" + departamento + "&nombre=" + nombre + "&razonSocial=" + razonSocial + "&registrosTotales=" + registrosTotales, {responseType: 'blob' as 'json'});
+  }
+
+  exportExcel(id: string, departamento: any, nombre: any, razonSocial: any, registrosTotales: number):Observable<any>{
+    if(departamento == undefined){
+      departamento = "";
+    }  
+    if(nombre == undefined){
+     nombre = "";
+    }
+  
+    return this.http.get<any>(this.urlEndpoint + "/" + id + "/excel?departamento=" + departamento + "&nombre=" + nombre + "&razonSocial=" + razonSocial + "&registrosTotales=" + registrosTotales, {responseType: 'blob' as 'json'});
   }
 
   getDepartamentosFiltro(id: string, departamento: any, nombre: any): Observable<Departamento[]>{

@@ -22,6 +22,10 @@ export class DepartamentoService {
     return this.http.get<Departamento[]>(this.urlEndpoint + "/" + id);
   }
 
+  selectDepartamentos(id:string): Observable<Departamento[]>{
+    return this.http.get<Departamento[]>(this.urlEndpoint + "/" + id + "/select" )
+  }
+
   exportPdf(id: string, departamento: any, nombre: any, razonSocial: any, registrosTotales: number):Observable<any>{
     if(departamento == undefined){
       departamento = "";

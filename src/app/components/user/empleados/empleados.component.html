@@ -9,12 +9,12 @@
         </div>
         <div class="row mt-3 justify-content-center">
             <div class="col-lg-4 text-center">
-                <a href="" class="link btn">
+                <a  *ngIf="registrosTotales > 0" class="link btn" (click)="exportExcel()">
                     <i class="fas fa-file-excel i-excel" ></i> Exportar a Excel
                 </a>
             </div>
             <div class="col-lg-4 text-center">
-                <a href="" class="link btn">
+                <a  *ngIf="registrosTotales > 0" class="link btn" (click)="exportPdf()">
                     <i class="fas fa-file-pdf i-pdf" ></i> Exportar a PDF
                 </a>
             </div>
@@ -28,20 +28,26 @@
         </div>
         <div class="form-row mt-2 justify-content-around">
             <div class="form-group col-lg-3 col-md-5 col-6">
-                <label for="empleado"><strong># de Empleado</strong></label>
+                <label for="empleado"><strong># de Empleado:</strong></label>
                 <input type="text" class="form-control" oninput="this.value=this.value.toUpperCase()" id="empleado" name="empleado" [(ngModel)]="empleado.empleado" (input)="filtro()">
             </div>
             <div class="form-group col-lg-3 col-md-5 col-6">
-                <label for="nombre"><strong>Nombre de Empleado</strong></label>
+                <label for="nombre"><strong>Nombre de Empleado:</strong></label>
                 <input type="text" class="form-control" oninput="this.value=this.value.toUpperCase()" id="nombre" name="nombre" [(ngModel)]="empleado.nombre" (input)="filtro()">
             </div>
             <div class="form-group col-lg-3 col-md-5 col-6">
-                <label for="departamento"><strong># de Departamento</strong></label>
-                <input type="text" class="form-control" oninput="this.value=this.value.toUpperCase()" id="departamento" name="departamento" [(ngModel)]="empleado.departamento" (input)="filtro()">
+                <label for="departamento"><strong>Departamento:</strong></label>
+                <select id="departamento" name="departamento" [(ngModel)]="empleado.departamento" (change)="filtro()" class="form-control">
+                    <option value="">TODOS</option>
+                    <option *ngFor="let departamento of departamentos" [value]="departamento.departamento">{{departamento.nombre}}</option>
+                </select>
             </div>
             <div class="form-group col-lg-3 col-md-5 col-6">
-                <label for="puesto"><strong># de Puesto</strong></label>
-                <input type="text" class="form-control"oninput="this.value=this.value.toUpperCase()" id="puesto" name="puesto" [(ngModel)]="empleado.puesto" (input)="filtro()">
+                <label for="Puesto"><strong>Puesto:</strong></label>
+                <select id="puesto" name="puesto" [(ngModel)]="empleado.puesto" (change)="filtro()" class="form-control">
+                    <option value="">TODOS</option>
+                    <option *ngFor="let puesto of puestos" [value]="puesto.puesto">{{puesto.nombre}}</option>
+                </select>
             </div>
         </div>
         <div class="row mt-4 justify-content-center">
@@ -59,9 +65,9 @@
                     <tbody class="text-center">
                         <tr *ngFor="let empleado of empleados">
                             <td>{{empleado.empleado}}</td>
-                            <td>{{empleado.nombre}}</td>
-                            <td>{{empleado.departamento}}</td>
-                            <td>{{empleado.puesto}}</td>
+                            <td class="text-left">{{empleado.nombre}}</td>
+                            <td class="text-left">{{empleado.departamento}}</td>
+                            <td class="text-left">{{empleado.puesto}}</td>
                         </tr>
                         <tr *ngIf="registrosTotales == 0">
                             <td colspan="4">

@@ -22,6 +22,10 @@ export class PuestoService {
     return this.http.get<Puesto[]>(this.urlEndpoint + "/" + id);
   }
 
+  selectPuestos(id:string): Observable<Puesto[]>{
+    return this.http.get<Puesto[]>(this.urlEndpoint + "/" + id +"/select")
+  }
+
   file(id: string, puesto: any, nombre: any, razonSocial: any, registrosTotales: number):Observable<any>{
     let headers = new HttpHeaders();
     if(puesto == undefined){

@@ -89,54 +89,51 @@ export class EmpleadosComponent implements OnInit {
     }
   }
 
-    filtro(){
-      if(this.rfc){
-        this.empleadoService.getEmpleadosFiltro(this.rfc, this.empleado.empleado, this.empleado.nombre, this.empleado.departamento, this.empleado.puesto).subscribe(
-          (empleados) => {
-            this.empleados = empleados
-            this.registrosTotales = empleados.length;
-          }
-        )
-      }
+  filtro(){
+    if(this.rfc){
+      this.empleadoService.getEmpleadosFiltro(this.rfc, this.empleado.empleado, this.empleado.nombre, this.empleado.departamento, this.empleado.puesto).subscribe(
+        (empleados) => {
+          this.empleados = empleados
+          this.registrosTotales = empleados.length;
+        }
+      )
     }
+  }
 
-    exportPdf(){
-      let fecha = new Date();
-      let options ={ year: 'numeric', month: 'long', day: 'numeric'} as const;
+  exportPdf(){
+    let fecha = new Date();
+    let options ={ year: 'numeric', month: 'long', day: 'numeric'} as const;
         
-      if(this.rfc){
-        this.empleadoService.exportPdf(this.rfc, this.empleado.empleado, this.empleado.nombre, this.empleado.departamento,this.empleado.puesto, this.empresa.razonSocial, this.registrosTotales).subscribe(
-          (data) =>{
-            this.blob = new Blob([data], {type: 'application/pdf'});
-            var downloadURL = window.URL.createObjectURL(data);
-            var link = document.createElement('a');
-            link.href = downloadURL;
-            link.download = "Reporte de Empleados al " + fecha.toLocaleDateString('es-MX', options) + ".pdf";
-            link.click();
-          }
-        );
-      }
+    if(this.rfc){
+      this.empleadoService.exportPdf(this.rfc, this.empleado.empleado, this.empleado.nombre, this.empleado.departamento,this.empleado.puesto, this.empresa.razonSocial, this.registrosTotales).subscribe(
+        (data) =>{
+          this.blob = new Blob([data], {type: 'application/pdf'});
+          var downloadURL = window.URL.createObjectURL(data);
+          var link = document.createElement('a');
+          link.href = downloadURL;
+          link.download = "Reporte de Empleados al " + fecha.toLocaleDateString('es-MX', options) + ".pdf";
+          link.click();
+        }
+      );
     }
+  }
 
-    exportExcel(){
-      let fecha = new Date();
-      let options ={ year: 'numeric', month: 'long', day: 'numeric'} as const;
+  exportExcel(){
+    let fecha = new Date();
+    let options ={ year: 'numeric', month: 'long', day: 'numeric'} as const;
         
-      if(this.rfc){
-        this.empleadoService.exportExcel(this.rfc, this.empleado.empleado, this.empleado.nombre, this.empleado.departamento,this.empleado.puesto, this.empresa.razonSocial, this.registrosTotales).subscribe(
-          (data) =>{
-            this.blob = new Blob([data], {type: 'application/octet-stream'});
-            var downloadURL = window.URL.createObjectURL(data);
-            var link = document.createElement('a');
-            link.href = downloadURL;
-            link.download = "Reporte de Empleados al " + fecha.toLocaleDateString('es-MX', options) + ".xlsx";
-            link.click();
-          }
-        );
-      }
+    if(this.rfc){
+      this.empleadoService.exportExcel(this.rfc, this.empleado.empleado, this.empleado.nombre, this.empleado.departamento,this.empleado.puesto, this.empresa.razonSocial, this.registrosTotales).subscribe(
+        (data) =>{
+          this.blob = new Blob([data], {type: 'application/octet-stream'});
+          var downloadURL = window.URL.createObjectURL(data);
+          var link = document.createElement('a');
+          link.href = downloadURL;
+          link.download = "Reporte de Empleados al " + fecha.toLocaleDateString('es-MX', options) + ".xlsx";
+          link.click();
+        }
+      );
     }
+  }
 
 }
-
- 
-

@@ -33,6 +33,15 @@ export class DivisionService {
     return this.http.get<Division[]>(this.urlEndpoint + "/consulta/" + id);
   }
 
+  filtroDivisiones(id:string, nivel: number):Observable<Division[]>{
+    return this.http.get<Division[]>(this.urlEndpoint + "/" + id + "/filtro?nivel=" + nivel) 
+  }
+
+  exportExcel(id: string, nivel: number, razonSocial: any, registrosTotales: number, impCheck: boolean, empCheck: boolean):Observable<any>{
+  
+    return this.http.get<any>(this.urlEndpoint + "/" + id + "/excel?nivel=" + nivel + "&razonSocial=" + razonSocial + "&registrosTotales=" + registrosTotales + "&impCheck=" + impCheck + "&empCheck=" + empCheck, {responseType: 'blob' as 'json'});
+  }
+
   create(division: Division, id: any):Observable<Division[]>{
     return this.http.post<Division[]>(this.urlEndpoint + "/" + id + "/division", division).pipe(
      catchError(e => {

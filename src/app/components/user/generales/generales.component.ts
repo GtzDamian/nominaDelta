@@ -22,10 +22,6 @@ export class GeneralesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.cargarDatos();
-  }
-
-  cargarDatos(){
     this.activatedRoute.params.subscribe(params => {
       let id = params['id']
         if(id){
@@ -35,6 +31,7 @@ export class GeneralesComponent implements OnInit {
             }
           )
         }
-      }) 
+      }
+    ) 
   }
 }

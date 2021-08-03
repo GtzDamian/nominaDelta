@@ -65,40 +65,42 @@ export class PuestosComponent implements OnInit {
         }
       )
     }
-    }
+  }
 
-    exportPdf(){
-      let fecha = new Date();
-        //alert(id + "_" + this.concepto.concepto + "_" + this.concepto.nombre + "_" + this.empresa.razonSocial + "_" + this.registrosTotales);
-          if(this.rfc){
-            this.puestoService.file(this.rfc, this.puesto.puesto, this.puesto.nombre, this.empresa.razonSocial, this.registrosTotales).subscribe(
-              (data) =>{
-                this.blob = new Blob([data], {type: 'application/pdf'});
-                var downloadURL = window.URL.createObjectURL(data);
-                var link = document.createElement('a');
-                link.href = downloadURL;
-                link.download = "Reporte de Puestos al " + fecha.getDate() + "_" + fecha.getMonth() + "_" + fecha.getFullYear() + ".pdf";
-                link.click();
-              }
-            );
-          }
+  exportPdf(){
+    let fecha = new Date();
+    let options ={ year: 'numeric', month: 'long', day: 'numeric'} as const;
+      
+    if(this.rfc){
+      this.puestoService.file(this.rfc, this.puesto.puesto, this.puesto.nombre, this.empresa.razonSocial, this.registrosTotales).subscribe(
+        (data) =>{
+          this.blob = new Blob([data], {type: 'application/pdf'});
+          var downloadURL = window.URL.createObjectURL(data);
+          var link = document.createElement('a');
+          link.href = downloadURL;
+          link.download = "Reporte de Puestos al " + fecha.toLocaleDateString('es-MX', options) + ".pdf";
+          link.click();
+        }
+      );
     }
+  }
 
-    exportExcel(){
-      let fecha = new Date();
-        //alert(id + "_" + this.concepto.concepto + "_" + this.concepto.nombre + "_" + this.empresa.razonSocial + "_" + this.registrosTotales);
-          if(this.rfc){
-            this.puestoService.fileExcel(this.rfc, this.puesto.puesto, this.puesto.nombre, this.empresa.razonSocial, this.registrosTotales).subscribe(
-              (data) =>{
-                this.blob = new Blob([data], {type: 'application/octet-stream'});
-                var downloadURL = window.URL.createObjectURL(data);
-                var link = document.createElement('a');
-                link.href = downloadURL;
-                link.download = "Reporte de Puestos al " + fecha.getDate() + "_" + fecha.getMonth() + "_" + fecha.getFullYear() + ".xlsx";
-                link.click();
-              }
-            );
-          }
+  exportExcel(){
+    let fecha = new Date();
+    let options ={ year: 'numeric', month: 'long', day: 'numeric'} as const;
+        
+    if(this.rfc){
+      this.puestoService.fileExcel(this.rfc, this.puesto.puesto, this.puesto.nombre, this.empresa.razonSocial, this.registrosTotales).subscribe(
+        (data) =>{
+          this.blob = new Blob([data], {type: 'application/octet-stream'});
+          var downloadURL = window.URL.createObjectURL(data);
+          var link = document.createElement('a');
+          link.href = downloadURL;
+          link.download = "Reporte de Puestos al " + fecha.toLocaleDateString('es-MX', options) + ".xlsx";
+          link.click();
+        }
+      );
     }
+  }
 
 }
